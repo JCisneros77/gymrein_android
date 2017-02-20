@@ -21,7 +21,7 @@ public class UserAreaActivity extends AppCompatActivity {
         final TextView tv_welcome = (TextView) findViewById(R.id.tv_welcome);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+        String name = intent.getStringExtra("nameeeeee");
         String email = intent.getStringExtra("email");
         String lastname = intent.getStringExtra("lastname");
         String phone = intent.getStringExtra("phone");
