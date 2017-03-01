@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
 
         // Create variables for all the text fields and buttons.
         // final => because variables won't change
-
         final EditText tf_email = (EditText) findViewById(R.id.tf_email);
         final EditText tf_password = (EditText) findViewById(R.id.tf_password);
         final Button btn_login = (Button) findViewById(R.id.btn_login);
@@ -47,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String email = tf_email.getText().toString();
                 final String password = tf_password.getText().toString();
-
+                System.out.println("hola");
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
