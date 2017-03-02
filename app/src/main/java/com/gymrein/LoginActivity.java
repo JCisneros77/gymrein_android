@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         // Create variables for all the text fields and buttons.
         // final => because variables won't change
         final EditText tf_email = (EditText) findViewById(R.id.tf_email);
@@ -65,15 +66,15 @@ public class LoginActivity extends AppCompatActivity {
                                 //int classesResponse = userDetails.getInt("available_classes");
                                 String tokenResponse = userDetails.getString("access_token");
 
-                                Intent userAreaIntent = new Intent(LoginActivity.this,UserAreaActivity.class);
-                                userAreaIntent.putExtra("name",nameResponse);
-                                userAreaIntent.putExtra("lastname",lastNameResponse);
-                                userAreaIntent.putExtra("email",emailResponse);
-                                userAreaIntent.putExtra("phone",phoneResponse);
+                                Intent classesOfDayIntent = new Intent(LoginActivity.this,ClassesOfDayActivity.class);
+                                classesOfDayIntent.putExtra("name",nameResponse);
+                                classesOfDayIntent.putExtra("lastname",lastNameResponse);
+                                classesOfDayIntent.putExtra("email",emailResponse);
+                                classesOfDayIntent.putExtra("phone",phoneResponse);
                                // userAreaIntent.putExtra("classes",classesResponse);
-                                userAreaIntent.putExtra("token",tokenResponse);
+                                classesOfDayIntent.putExtra("token",tokenResponse);
 
-                                LoginActivity.this.startActivity(userAreaIntent);
+                                LoginActivity.this.startActivity(classesOfDayIntent);
 
                             }else{
                                 displayMessage("Inicio de Sesión Fallido.");
