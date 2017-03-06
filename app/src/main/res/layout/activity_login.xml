@@ -14,22 +14,12 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@mipmap/logo"
+        android:src="@mipmap/icon"
         android:id="@+id/imageView"
         android:layout_above="@+id/tf_email"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="-25dp"/>
-
-    <TextView
-        android:text="GymRein"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/tf_email"
-        android:textColor="#ffffff"
-        android:textSize="35dp"
-        android:layout_marginBottom="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
