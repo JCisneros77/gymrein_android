@@ -32,20 +32,18 @@
             android:background="@android:color/transparent"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/tv_classes_of_day"
-            android:tint="@color/OrangeAccent"
-            android:scaleType="fitCenter" />
+            android:tint="@color/OrangeAccent" />
 
         <TextView
-            android:text="Clases del Día"
+            android:id="@+id/tv_classes_of_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_classes_of_day"
+            android:layout_below="@+id/btn_side_menu"
+            android:layout_centerHorizontal="true"
+            android:text="Clases del Día"
             android:textColor="@android:color/holo_blue_bright"
             android:textIsSelectable="false"
-            android:textSize="44sp"
-            android:layout_below="@+id/btn_side_menu"
-            android:layout_centerHorizontal="true" />
+            android:textSize="44sp" />
 
     </RelativeLayout>
 

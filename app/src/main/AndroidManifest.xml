@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gymrein">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"   />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"   />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false"></uses-feature>
+
     <application
+        android:name = ".GymReinApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-       <!-- android:theme="@style/AppTheme"-->
 
+        <!-- android:theme="@style/AppTheme" -->
 
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -19,7 +26,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".ClassesOfDayActivity"></activity>
+        <activity android:name=".ClassesOfDayActivity" />
+        <activity android:name=".AddPaymentActivity" />
+        <activity android:name=".PaymentActivity"></activity>
     </application>
 
 </manifest>

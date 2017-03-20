@@ -18,6 +18,7 @@ public class CustomAdapter extends ArrayAdapter<SideMenuItemModel> implements Vi
 
     private ArrayList<SideMenuItemModel> dataSet;
     Context menu_context;
+    private int item_type = -1;
 
     // View lookup cache
     private static class ViewHolder {
@@ -25,10 +26,12 @@ public class CustomAdapter extends ArrayAdapter<SideMenuItemModel> implements Vi
         ImageView iv_item_image;
     }
 
-    public CustomAdapter(ArrayList<SideMenuItemModel> data, Context context) {
-        super(context, R.layout.side_menu_item, data);
+    public CustomAdapter(ArrayList<SideMenuItemModel> data, Context context,int layout_type, int itemType) {
+        super(context, layout_type, data);
+
         this.dataSet = data;
         this.menu_context=context;
+        this.item_type = itemType;
 
     }
 
@@ -56,9 +59,18 @@ public class CustomAdapter extends ArrayAdapter<SideMenuItemModel> implements Vi
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.side_menu_item, parent, false);
-            viewHolder.tv_item_name = (TextView) convertView.findViewById(R.id.tv_item_name);
-            viewHolder.iv_item_image = (ImageView) convertView.findViewById(R.id.iv_item_image);
+
+            if (this.item_type == 0) {
+                // Side Menu
+                convertView = inflater.inflate(R.layout.side_menu_item, parent, false);
+                viewHolder.tv_item_name = (TextView) convertView.findViewById(R.id.tv_sm_item_name);
+                viewHolder.iv_item_image = (ImageView) convertView.findViewById(R.id.iv_sm_item_image);
+            } else if (this.item_type == 1){
+                // Credit cards
+                convertView = inflater.inflate(R.layout.credit_card_item, parent, false);
+                viewHolder.tv_item_name = (TextView) convertView.findViewById(R.id.tv_cc_item_name);
+                viewHolder.iv_item_image = (ImageView) convertView.findViewById(R.id.iv_cc_item_image);
+            }
 
             result=convertView;
 

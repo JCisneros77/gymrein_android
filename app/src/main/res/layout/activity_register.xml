@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
@@ -11,13 +12,25 @@
     android:background="@color/GreyBackground"
     tools:context="com.gymrein.RegisterActivity">
 
+    <EditText
+        android:id="@+id/tf_date_of_birth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Fecha de Nacimiento"
+        android:inputType="date"
+        android:focusable="false"
+        android:layout_below="@+id/tf_phone"
+        android:layout_alignStart="@+id/tf_phone"
+        android:layout_alignParentEnd="true" />
+
     <Button
         android:text="Registrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_register"
-        android:layout_marginBottom="46dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/cb_terms_cond"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -27,20 +40,20 @@
         android:ems="10"
         android:id="@+id/tf_confirmPassword"
         android:hint="Confirmar Contraseña"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="300dp"
+        android:layout_below="@+id/tf_password"
+        android:layout_alignStart="@+id/tf_password"
         android:layout_alignParentEnd="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/tf_name"
         android:hint="Nombre"
-        android:layout_marginTop="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/btn_profile_picture"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -50,8 +63,8 @@
         android:ems="10"
         android:id="@+id/tf_email"
         android:hint="Email"
-        android:layout_marginTop="120dp"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tf_lastName"
+        android:layout_alignStart="@+id/tf_lastName"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -61,8 +74,8 @@
         android:ems="10"
         android:id="@+id/tf_lastName"
         android:hint="Apellido"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tf_name"
+        android:layout_alignStart="@+id/tf_name"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -72,9 +85,8 @@
         android:ems="10"
         android:id="@+id/tf_password"
         android:hint="Contraseña"
-        android:layout_marginTop="240dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/sp_gender"
+        android:layout_alignStart="@+id/sp_gender"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -84,7 +96,51 @@
         android:ems="10"
         android:id="@+id/tf_phone"
         android:hint="Teléfono"
-        android:layout_marginTop="180dp"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tf_email"
+        android:layout_alignStart="@+id/tf_email"
         android:layout_alignParentEnd="true" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/btn_profile_picture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border="true"
+        app:civ_border_color="@color/GreyBackground"
+        app:civ_shadow="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/btn_register" />
+
+    <Spinner
+        android:id="@+id/sp_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="41dp"
+        android:layout_below="@+id/tf_date_of_birth"
+        android:layout_alignEnd="@+id/tf_date_of_birth"
+        android:layout_alignStart="@+id/tf_date_of_birth" />
+
+
+    <CheckBox
+        android:id="@+id/cb_terms_cond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tf_confirmPassword"
+        android:layout_below="@+id/tf_confirmPassword" />
+
+    <TextView
+        android:id="@+id/tv_terms_cond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_register"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tf_confirmPassword"
+        android:layout_toRightOf="@id/cb_terms_cond"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:text="@string/terms_and_conditions"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="17sp" />
+
+
 </RelativeLayout>

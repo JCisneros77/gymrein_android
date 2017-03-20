@@ -6,22 +6,21 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/iv_sm_item_image"
+        android:id="@+id/iv_cc_item_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_side_menu"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
-        android:id="@+id/tv_sm_item_name"
+        android:id="@+id/tv_cc_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:layout_marginStart="16dp"
         android:textSize="20sp"
         android:text="Item Name"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/iv_sm_item_image" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

@@ -66,13 +66,17 @@ public class LoginActivity extends AppCompatActivity {
                                 //int classesResponse = userDetails.getInt("available_classes");
                                 String tokenResponse = userDetails.getString("access_token");
 
+                                UserInformation userInfo = new UserInformation(nameResponse,emailResponse,lastNameResponse,phoneResponse,0,tokenResponse);
+                                GymReinApp app = (GymReinApp) getApplicationContext();
+                                app.setUserInformation(userInfo);
+
                                 Intent classesOfDayIntent = new Intent(LoginActivity.this,ClassesOfDayActivity.class);
-                                classesOfDayIntent.putExtra("name",nameResponse);
+                                /*classesOfDayIntent.putExtra("name",nameResponse);
                                 classesOfDayIntent.putExtra("lastname",lastNameResponse);
                                 classesOfDayIntent.putExtra("email",emailResponse);
                                 classesOfDayIntent.putExtra("phone",phoneResponse);
                                // userAreaIntent.putExtra("classes",classesResponse);
-                                classesOfDayIntent.putExtra("token",tokenResponse);
+                                classesOfDayIntent.putExtra("token",tokenResponse);*/
 
                                 LoginActivity.this.startActivity(classesOfDayIntent);
 

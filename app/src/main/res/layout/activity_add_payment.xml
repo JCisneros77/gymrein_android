@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/GreyBackground"
+    tools:context="com.gymrein.AddPaymentActivity">
+
+    <EditText
+        android:id="@+id/tf_card_number"
+        android:layout_width="359dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/tf_card_holder_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:ems="10"
+        android:hint="Número de Tarjeta"
+        android:inputType="number"
+        android:maxLength="19"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <EditText
+        android:id="@+id/tf_card_exp_year"
+        android:layout_width="153dp"
+        android:layout_height="43dp"
+        android:layout_alignBaseline="@+id/tf_card_exp_moth"
+        android:layout_alignBottom="@+id/tf_card_exp_moth"
+        android:layout_alignEnd="@+id/tf_card_number"
+        android:ems="10"
+        android:hint="Año Exp. (YY)"
+        android:inputType="number"
+        android:maxLength="2"
+        tools:layout_editor_absoluteX="217dp"
+        tools:layout_editor_absoluteY="142dp" />
+
+    <EditText
+        android:id="@+id/tf_card_exp_moth"
+        android:layout_width="163dp"
+        android:layout_height="41dp"
+        android:layout_alignStart="@+id/tf_card_number"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="Mes Exp. (MM)"
+        android:inputType="number"
+        android:maxLength="2"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="142dp" />
+
+    <Button
+        android:id="@+id/btn_save_card"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:text="Guardar" />
+
+    <ImageButton
+        android:id="@+id/btn_back_to_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@mipmap/ic_back_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tf_card_number" />
+
+    <EditText
+        android:id="@+id/tf_card_holder_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tf_card_number"
+        android:layout_alignStart="@+id/btn_back_to_payment"
+        android:layout_below="@+id/btn_back_to_payment"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Nombre del tarjetahabiente"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/tf_card_cvv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tf_card_exp_moth"
+        android:layout_alignStart="@+id/tf_card_exp_moth"
+        android:layout_below="@+id/tf_card_exp_year"
+        android:layout_marginTop="46dp"
+        android:ems="10"
+        android:hint="CVV"
+        android:inputType="numberPassword"
+        android:maxLength="3" />
+</RelativeLayout>

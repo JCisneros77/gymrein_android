@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/choose_picture"
+        android:title="Escoger Imagen"/>
+
+    <item
+        android:id="@+id/take_picture"
+        android:title="Tomar Foto"/>
+
+    <item
+        android:id="@+id/delete_picture"
+        android:title="Borrar Imagen"/>
+
+</menu>

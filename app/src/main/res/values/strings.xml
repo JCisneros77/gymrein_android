@@ -2,4 +2,5 @@
     <string name="app_name">GymRein</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="terms_and_conditions"><u>Acepto los términos y condiciones</u></string>
 </resources>

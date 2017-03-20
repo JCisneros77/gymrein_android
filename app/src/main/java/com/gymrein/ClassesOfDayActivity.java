@@ -1,6 +1,7 @@
 package com.gymrein;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,6 +23,16 @@ public class ClassesOfDayActivity extends AppCompatActivity {
     private ListView lv_side_menu;
     private ActionBarDrawerToggle menu_drawer_toggle;
     private DrawerLayout menu_drawer_layout;
+    private TextView tv_title;
+
+    // Save User information
+    private static String name;
+    private static String email;
+    private static String lastname;
+    private static String phone;
+    private static int classes;
+    private static String token;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,12 @@ public class ClassesOfDayActivity extends AppCompatActivity {
         lv_side_menu = (ListView) findViewById(R.id.lv_side_menu);
 
         addDrawerItems();
+
+        // Set title
+        tv_title = (TextView) findViewById(R.id.tv_classes_of_day);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Graduate-Regular.ttf");
+        tv_title.setTypeface(custom_font);
+
 
         final ImageButton btn_side_menu = (ImageButton) findViewById(R.id.btn_side_menu);
         btn_side_menu.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +63,17 @@ public class ClassesOfDayActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 displayMessage(menu_dataset.get(position).getName());
+                switch (menu_dataset.get(position).getName()){
+                    case "Pagos":
+                    {
+                        Intent paymentsIntent = new Intent(ClassesOfDayActivity.this,PaymentActivity.class);
+                        ClassesOfDayActivity.this.startActivity(paymentsIntent);
+
+                        break;
+                    }
+
+
+                }
 
 
                 menu_drawer_layout.addDrawerListener( new DrawerLayout.SimpleDrawerListener(){
@@ -60,25 +88,18 @@ public class ClassesOfDayActivity extends AppCompatActivity {
         /* ************************* */
         final TextView tv_welcome = (TextView) findViewById(R.id.tv_classes_of_day);
 
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        String email = intent.getStringExtra("email");
-        String lastname = intent.getStringExtra("lastname");
-        String phone = intent.getStringExtra("phone");
-        //int classes = intent.getIntExtra("classes",0);
-        String token = intent.getStringExtra("token");
-
 
     }
+
 
     private void addDrawerItems() {
         menu_dataset = new ArrayList<>();
         menu_dataset.add(new SideMenuItemModel("Calendario",R.mipmap.ic_back_button));
         menu_dataset.add(new SideMenuItemModel("Mis Clases",R.mipmap.lock));
-        menu_dataset.add(new SideMenuItemModel("Pago",R.mipmap.mail));
+        menu_dataset.add(new SideMenuItemModel("Pagos",R.mipmap.mail));
         menu_dataset.add(new SideMenuItemModel("Perfil",R.mipmap.ic_back_button));
 
-        menu_Adapter = new CustomAdapter(menu_dataset,getApplicationContext());
+        menu_Adapter = new CustomAdapter(menu_dataset,getApplicationContext(),R.layout.side_menu_item,0);
 
         lv_side_menu.setAdapter(menu_Adapter);
     }
