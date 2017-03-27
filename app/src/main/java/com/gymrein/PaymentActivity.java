@@ -34,6 +34,10 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
+        String deleteMessage = getIntent().getStringExtra("message");
+        if (deleteMessage != null)
+            displayMessage(deleteMessage);
+
         lv_payment_methods = (ListView) findViewById(R.id.lv_payment_methods);
         btn_back_to_main = (ImageButton) findViewById(R.id.btn_back_to_main);
         Response.Listener<String> responseListener = new Response.Listener<String>(){
@@ -56,7 +60,9 @@ public class PaymentActivity extends AppCompatActivity {
                             else if(jsonObj.getString("brand").equals("mastercard")){
                                 image = R.mipmap.mail;
                             }
-                            payment_dataset.add(new SideMenuItemModel(jsonObj.getString("number"),image));
+                            payment_dataset.add(new SideMenuItemModel(jsonObj.getString("number"),image,jsonObj.getString("holder_name"),
+                                    jsonObj.getString("brand"),jsonObj.getString("number"),jsonObj.getString("expiration_month"),
+                                    jsonObj.getString("expiration_year"),jsonObj.getString("id")));
                         }
 
                         payment_dataset.add(new SideMenuItemModel("Agregar Tarjeta",R.mipmap.mail));
@@ -111,6 +117,17 @@ public class PaymentActivity extends AppCompatActivity {
                         Intent addPaymentIntent = new Intent(PaymentActivity.this,AddPaymentActivity.class);
                         PaymentActivity.this.startActivity(addPaymentIntent);
 
+                        break;
+                    }
+                    default:{
+                        Intent paymentDetailIntent = new Intent(PaymentActivity.this,PaymentDetailActivity.class);
+                        paymentDetailIntent.putExtra("name",payment_dataset.get(position).getCardName());
+                        paymentDetailIntent.putExtra("brand",payment_dataset.get(position).getCardBrand());
+                        paymentDetailIntent.putExtra("exp_month",payment_dataset.get(position).getExpMonth());
+                        paymentDetailIntent.putExtra("exp_year",payment_dataset.get(position).getExpYear());
+                        paymentDetailIntent.putExtra("number",payment_dataset.get(position).getCard_number());
+                        paymentDetailIntent.putExtra("id",payment_dataset.get(position).getId());
+                        PaymentActivity.this.startActivity(paymentDetailIntent);
                         break;
                     }
 

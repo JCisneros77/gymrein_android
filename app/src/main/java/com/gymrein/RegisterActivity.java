@@ -32,6 +32,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -60,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText tf_date_of_birth;
     private Calendar myCalendar;
     private String[] genderArray;
+    private boolean profile_pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
         //final WebView wv_terms_cond = (WebView) findViewById(R.id.wv_terms_cond);
         final Button btn_register = (Button) findViewById(R.id.btn_register);
         btn_profile_picture = (CircularImageView) findViewById(R.id.btn_profile_picture);
+        profile_pic = false;
 
         // Terms and Conditions
         tv_terms_cond.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,genderArray);
         sp_gender.setAdapter(genderAdapter);
 
-
+        // Profile Picture
         btn_profile_picture.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -161,6 +164,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 break;
                             case R.id.delete_picture:
                                 btn_profile_picture.setImageResource(R.mipmap.ic_launcher);
+                                profile_pic = false;
                                 break;
                         }
 
@@ -180,7 +184,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!cb_terms_cond.isChecked())
                     displayMessage("Favor de aceptar los términos y condiciones.");
                 else {
-
+                    System.out.println("Sending Request...");
                     final String name = tf_name.getText().toString();
                     final String lastName = tf_lastName.getText().toString();
                     final String email = tf_email.getText().toString();
@@ -190,13 +194,16 @@ public class RegisterActivity extends AppCompatActivity {
                     String gender = sp_gender.getSelectedItem().toString();
 
                     // Image
-                    Drawable drawable = btn_profile_picture.getDrawable();
-                    BitmapDrawable bitmapDrawable = ((BitmapDrawable) drawable);
-                    Bitmap bitmap = bitmapDrawable .getBitmap();
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                    byte[] imageInByte = stream.toByteArray();
-                    String encodedImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
+                    String encodedImage = "";
+                    if (profile_pic) {
+                        Drawable drawable = btn_profile_picture.getDrawable();
+                        BitmapDrawable bitmapDrawable = ((BitmapDrawable) drawable);
+                        Bitmap bitmap = bitmapDrawable.getBitmap();
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                        byte[] imageInByte = stream.toByteArray();
+                        encodedImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
+                    }
 
 
                     if (gender.equals("Masculino"))
@@ -235,12 +242,20 @@ public class RegisterActivity extends AppCompatActivity {
                                         break;
                                     case 400:
                                         json = new String(response.data);
-                                        System.out.println(json.length());
                                         System.out.println(json);
                                         if (json != null && json.length() > 0)
                                             json = trimMessage(json, "message");
                                         if (json != null && json != "")
                                             displayMessage(json);
+                                        break;
+                                    default:
+                                        System.out.println("Status: " + response.statusCode);
+                                        json = new String(response.data);
+                                        System.out.println(json);
+                                        /*if (json != null && json.length() > 0)
+                                            json = trimMessage(json, "message");
+                                        if (json != null && json != "")
+                                            displayMessage(json);*/
                                         break;
                                 }
                             }
@@ -266,13 +281,20 @@ public class RegisterActivity extends AppCompatActivity {
                     JSONObject userJSON = new JSONObject(userParams);
                     try {
                         userJSON.put("platform","android");
-                        userJSON.put("avatar",encodedImage);
+                        if (profile_pic)
+                            userJSON.put("avatar",encodedImage);
+                        else
+                            userJSON.put("avatar",null);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                     System.out.println(userJSON.toString());
                     RegisterRequest registerRequest = new RegisterRequest(userJSON, responseListener, errorListener);
+                    registerRequest.setRetryPolicy(new DefaultRetryPolicy(
+                            0,
+                            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                     RequestQueue reqQueue = Volley.newRequestQueue(RegisterActivity.this);
                     reqQueue.add(registerRequest);
                 }
@@ -283,9 +305,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST  && resultCode == Activity.RESULT_OK) {
+        if (requestCode == CAMERA_REQUEST  && resultCode == Activity.RESULT_OK && data != null) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             btn_profile_picture.setImageBitmap(photo);
+            profile_pic = true;
         }else if (requestCode == PICK_IMAGE  && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
@@ -300,6 +323,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
             btn_profile_picture.setImageBitmap(bitmap);
+            profile_pic = true;
         }
     }
 

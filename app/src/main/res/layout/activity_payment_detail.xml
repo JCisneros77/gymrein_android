@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/GreyBackground"
+    tools:context="com.gymrein.PaymentActivity">
+
+    <ImageButton
+        android:id="@+id/btn_back_to_payment_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
+        android:layout_alignStart="@+id/tv_payment_details"
+        android:background="@android:color/transparent"
+        app:srcCompat="@mipmap/ic_back_button"/>
+
+    <TextView
+        android:id="@+id/tv_payment_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="68dp"
+        android:text="Tarjeta de Crédito"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/btn_delete_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="Eliminar Tarjeta"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tv_card_holder_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_payment_details"
+        android:layout_below="@+id/tv_payment_details"
+        android:layout_marginTop="61dp" />
+
+    <TextView
+        android:id="@+id/tv_exp_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_card_number"
+        android:layout_below="@+id/tv_card_number"
+        android:layout_marginTop="58dp" />
+
+    <TextView
+        android:id="@+id/tv_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_card_holder_name"
+        android:layout_below="@+id/tv_card_holder_name"
+        android:layout_marginTop="44dp" />
+
+</RelativeLayout>
