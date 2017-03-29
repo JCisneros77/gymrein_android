@@ -20,7 +20,8 @@
         android:inputType="number"
         android:maxLength="19"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="41dp" />
+        tools:layout_editor_absoluteY="41dp"
+        android:backgroundTint="@color/BlueIcon"/>
 
     <EditText
         android:id="@+id/tf_card_exp_year"
@@ -34,7 +35,8 @@
         android:inputType="number"
         android:maxLength="2"
         tools:layout_editor_absoluteX="217dp"
-        tools:layout_editor_absoluteY="142dp" />
+        tools:layout_editor_absoluteY="142dp"
+        android:backgroundTint="@color/BlueIcon"/>
 
     <EditText
         android:id="@+id/tf_card_exp_moth"
@@ -47,16 +49,20 @@
         android:inputType="number"
         android:maxLength="2"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="142dp" />
+        tools:layout_editor_absoluteY="142dp"
+        android:backgroundTint="@color/BlueIcon"/>
 
     <Button
         android:id="@+id/btn_save_card"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="41dp"
-        android:text="Guardar" />
+        android:text="Guardar"
+        android:background="@drawable/rouded_corners"
+        android:paddingRight="10px"
+        android:paddingLeft="10px" />
 
     <ImageButton
         android:id="@+id/btn_back_to_payment"
@@ -64,9 +70,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@android:color/transparent"
-        app:srcCompat="@mipmap/ic_back_button"
+        android:src="@mipmap/ic_back_button"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/tf_card_number" />
+        android:layout_alignStart="@+id/tf_card_number"
+        android:tint="@color/OrangeAccent"/>
 
     <EditText
         android:id="@+id/tf_card_holder_name"
@@ -78,7 +85,8 @@
         android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Nombre del tarjetahabiente"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:backgroundTint="@color/BlueIcon"/>
 
     <EditText
         android:id="@+id/tf_card_cvv"
@@ -91,5 +99,6 @@
         android:ems="10"
         android:hint="CVV"
         android:inputType="numberPassword"
-        android:maxLength="3" />
+        android:maxLength="3"
+        android:backgroundTint="@color/BlueIcon"/>
 </RelativeLayout>

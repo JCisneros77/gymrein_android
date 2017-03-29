@@ -55,17 +55,20 @@ public class PaymentActivity extends AppCompatActivity {
                             JSONObject jsonObj = jsonResponse.getJSONObject(i);
                             int image = -1;
                             if(jsonObj.getString("brand").equals("visa")){
-                                image = R.mipmap.ic_back_button;
+                                image = R.mipmap.ic_visa;
                             }
                             else if(jsonObj.getString("brand").equals("mastercard")){
-                                image = R.mipmap.mail;
+                                image = R.mipmap.ic_mastercard;
+                            }
+                            else if(jsonObj.getString("brand").equals("amex")){
+                                image = R.mipmap.ic_amex;
                             }
                             payment_dataset.add(new SideMenuItemModel(jsonObj.getString("number"),image,jsonObj.getString("holder_name"),
                                     jsonObj.getString("brand"),jsonObj.getString("number"),jsonObj.getString("expiration_month"),
                                     jsonObj.getString("expiration_year"),jsonObj.getString("id")));
                         }
 
-                        payment_dataset.add(new SideMenuItemModel("Agregar Tarjeta",R.mipmap.mail));
+                        payment_dataset.add(new SideMenuItemModel("Agregar Tarjeta",R.mipmap.ic_add));
                         payment_adapter = new CustomAdapter(payment_dataset,getApplicationContext(),R.layout.credit_card_item,1);
 
                         lv_payment_methods.setAdapter(payment_adapter);

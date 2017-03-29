@@ -12,37 +12,26 @@
     android:background="@color/GreyBackground"
     tools:context="com.gymrein.RegisterActivity">
 
-    <EditText
-        android:id="@+id/tf_date_of_birth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Fecha de Nacimiento"
-        android:inputType="date"
-        android:focusable="false"
-        android:layout_below="@+id/tf_phone"
-        android:layout_alignStart="@+id/tf_phone"
-        android:layout_alignParentEnd="true" />
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/btn_profile_picture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignEnd="@+id/btn_register"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:src="@mipmap/ic_add_image"
+        app:civ_border="true"
+        app:civ_border_color="@color/GreyBackground"
+        app:civ_shadow="false" />
 
-    <Button
-        android:text="Registrar"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_register"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/cb_terms_cond"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/tf_confirmPassword"
-        android:hint="Confirmar Contraseña"
-        android:layout_below="@+id/tf_password"
-        android:layout_alignStart="@+id/tf_password"
-        android:layout_alignParentEnd="true" />
+        android:src="@mipmap/ic_person"
+        android:id="@+id/iconName"
+        android:tint="@color/BlueIcon"
+        android:layout_above="@+id/tf_lastName"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -51,21 +40,19 @@
         android:ems="10"
         android:id="@+id/tf_name"
         android:hint="Nombre"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="60dp"
+        android:backgroundTint="@color/BlueIcon"
         android:layout_below="@+id/btn_profile_picture"
         android:layout_alignParentEnd="true" />
 
-    <EditText
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/tf_email"
-        android:hint="Email"
-        android:layout_below="@+id/tf_lastName"
-        android:layout_alignStart="@+id/tf_lastName"
-        android:layout_alignParentEnd="true" />
+        android:src="@mipmap/ic_person"
+        android:id="@+id/iconLast"
+        android:tint="@color/BlueIcon"
+        android:layout_above="@+id/tf_email"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -76,18 +63,38 @@
         android:hint="Apellido"
         android:layout_below="@+id/tf_name"
         android:layout_alignStart="@+id/tf_name"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/BlueIcon"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/mail"
+        android:id="@+id/iconMail"
+        android:tint="@color/BlueIcon"
+        android:layout_above="@+id/tf_phone"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/tf_password"
-        android:hint="Contraseña"
-        android:layout_below="@+id/sp_gender"
-        android:layout_alignStart="@+id/sp_gender"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/tf_email"
+        android:hint="Email"
+        android:layout_below="@+id/tf_lastName"
+        android:layout_alignStart="@+id/tf_lastName"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/BlueIcon"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_phone"
+        android:id="@+id/iconPhone"
+        android:tint="@color/BlueIcon"
+        android:layout_above="@+id/tf_date_of_birth"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -98,18 +105,40 @@
         android:hint="Teléfono"
         android:layout_below="@+id/tf_email"
         android:layout_alignStart="@+id/tf_email"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/BlueIcon"/>
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/btn_profile_picture"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher"
-        app:civ_border="true"
-        app:civ_border_color="@color/GreyBackground"
-        app:civ_shadow="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/btn_register" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_calendar"
+        android:id="@+id/iconCalendar"
+        android:tint="@color/BlueIcon"
+        android:layout_above="@+id/sp_gender"
+        android:layout_alignParentStart="true" />
+
+
+    <EditText
+        android:id="@+id/tf_date_of_birth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Fecha de Nacimiento"
+        android:inputType="date"
+        android:focusable="false"
+        android:layout_below="@+id/tf_phone"
+        android:layout_alignStart="@+id/tf_phone"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/BlueIcon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_people"
+        android:id="@+id/iconPeople"
+        android:tint="@color/BlueIcon"
+        android:layout_below="@+id/iconCalendar"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/sp_gender"
@@ -120,13 +149,54 @@
         android:layout_alignEnd="@+id/tf_date_of_birth"
         android:layout_alignStart="@+id/tf_date_of_birth" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/lock"
+        android:id="@+id/iconPassword"
+        android:tint="@color/BlueIcon"
+        android:layout_below="@+id/sp_gender"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/tf_password"
+        android:hint="Contraseña"
+        android:layout_below="@+id/sp_gender"
+        android:layout_alignStart="@+id/sp_gender"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/BlueIcon"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/lock"
+        android:id="@+id/iconConfirm"
+        android:tint="@color/BlueIcon"
+        android:layout_below="@+id/tf_password"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/tf_confirmPassword"
+        android:hint="Confirmar Contraseña"
+        android:layout_below="@+id/tf_password"
+        android:layout_alignStart="@+id/tf_password"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/BlueIcon"/>
 
     <CheckBox
         android:id="@+id/cb_terms_cond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tf_confirmPassword"
-        android:layout_below="@+id/tf_confirmPassword" />
+        android:layout_below="@+id/tf_confirmPassword"
+        android:layout_toStartOf="@+id/tf_confirmPassword" />
 
     <TextView
         android:id="@+id/tv_terms_cond"
@@ -139,18 +209,20 @@
         android:clickable="true"
         android:gravity="center_vertical"
         android:text="@string/terms_and_conditions"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="@color/OrangeAccent"
         android:textSize="17sp" />
 
-    <ImageButton
-        android:id="@+id/btn_back_to_starting_page"
+    <Button
+        android:text="Registrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@mipmap/ic_back_button" />
+        android:id="@+id/btn_register"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/cb_terms_cond"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rouded_corners"
+        android:paddingRight="10px"
+        android:paddingLeft="10px" />
 
 
 </RelativeLayout>
