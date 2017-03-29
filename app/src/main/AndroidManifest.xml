@@ -20,18 +20,20 @@
 
         <!-- android:theme="@style/AppTheme" -->
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ClassesOfDayActivity" />
+        <activity android:name=".AddPaymentActivity" />
+        <activity android:name=".PaymentActivity" />
+        <activity android:name=".PaymentDetailActivity" />
+        <activity android:name=".StartingPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ClassesOfDayActivity" />
-        <activity android:name=".AddPaymentActivity" />
-        <activity android:name=".PaymentActivity" />
-        <activity android:name=".PaymentDetailActivity"></activity>
+        <activity android:name=".ForgotPasswordActivity"></activity>
     </application>
 
 </manifest>

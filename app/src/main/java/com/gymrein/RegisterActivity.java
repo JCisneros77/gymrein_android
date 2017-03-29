@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Create variables for all the text fields and buttons.
 
+        final ImageButton btn_back_to_starting = (ImageButton) findViewById(R.id.btn_back_to_starting_page);
         final EditText tf_name = (EditText) findViewById(R.id.tf_name);
         final EditText tf_lastName = (EditText) findViewById(R.id.tf_lastName);
         final EditText tf_email = (EditText) findViewById(R.id.tf_email);
@@ -85,6 +87,14 @@ public class RegisterActivity extends AppCompatActivity {
         btn_profile_picture = (CircularImageView) findViewById(R.id.btn_profile_picture);
         profile_pic = false;
 
+        // Back to starting page
+        btn_back_to_starting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startingPageIntent = new Intent(RegisterActivity.this, StartingPageActivity.class);
+                RegisterActivity.this.startActivity(startingPageIntent);
+            }
+        });
         // Terms and Conditions
         tv_terms_cond.setOnClickListener(new View.OnClickListener() {
             @Override

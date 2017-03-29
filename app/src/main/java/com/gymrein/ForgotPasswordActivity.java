@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
@@ -19,45 +18,31 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {
+public class ForgotPasswordActivity extends AppCompatActivity {
+
     private static int succStatusCode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_forgot_password);
 
+        final ImageButton btn_back_to_login = (ImageButton) findViewById(R.id.btn_back_to_login_forgotPsswd);
+        final Button btn_new_psswd = (Button) findViewById(R.id.btn_new_password);
+        final EditText tf_email = (EditText) findViewById(R.id.tf_email_forgotPsswd);
 
-        // Create variables for all the text fields and buttons.
-        // final => because variables won't change
-        final EditText tf_email = (EditText) findViewById(R.id.tf_email);
-        final EditText tf_password = (EditText) findViewById(R.id.tf_password);
-        final Button btn_login = (Button) findViewById(R.id.btn_login);
-        final TextView tv_linkForgotPsswd =(TextView) findViewById(R.id.tv_forgotPsswd);
-        final ImageButton ib_back_to_starting = (ImageButton) findViewById(R.id.btn_back_to_starting_login);
-
-        ib_back_to_starting.setOnClickListener(new View.OnClickListener() {
+        btn_back_to_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startingPageIntent = new Intent(LoginActivity.this,StartingPageActivity.class);
-                LoginActivity.this.startActivity(startingPageIntent);
+                Intent loginIntent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                ForgotPasswordActivity.this.startActivity(loginIntent);
             }
         });
 
-        tv_linkForgotPsswd.setOnClickListener(new View.OnClickListener() {
+        btn_new_psswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent forgotPsswdIntent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
-                LoginActivity.this.startActivity(forgotPsswdIntent);
-            }
-        });
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String email = tf_email.getText().toString();
-                final String password = tf_password.getText().toString();
-                System.out.println("hola");
+                String email = tf_email.getText().toString();
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -65,26 +50,20 @@ public class LoginActivity extends AppCompatActivity {
                         System.out.println(response);
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            boolean successFlag = jsonResponse.getBoolean("success");
+                            if(succStatusCode == 200){
+                                Boolean success = jsonResponse.getBoolean("success");
+                                String message = "";
+                                if(success)
+                                    message = jsonResponse.getString("message");
+                                else
+                                    message = jsonResponse.getString("error");
 
-                            if(successFlag){
-                                JSONObject userDetails = new JSONObject(jsonResponse.getString("user"));
-                                String nameResponse = userDetails.getString("name");
-                                String lastNameResponse = userDetails.getString("lastname");
-                                String emailResponse = userDetails.getString("email");
-                                String phoneResponse = userDetails.getString("phone");
-                                //int classesResponse = userDetails.getInt("available_classes");
-                                String tokenResponse = userDetails.getString("access_token");
-
-                                UserInformation userInfo = new UserInformation(nameResponse,emailResponse,lastNameResponse,phoneResponse,0,tokenResponse);
-                                GymReinApp app = (GymReinApp) getApplicationContext();
-                                app.setUserInformation(userInfo);
-
-                                Intent classesOfDayIntent = new Intent(LoginActivity.this,ClassesOfDayActivity.class);
-                                LoginActivity.this.startActivity(classesOfDayIntent);
+                                displayMessage(message);
+                                Intent startingPageIntent = new Intent(ForgotPasswordActivity.this,StartingPageActivity.class);
+                                ForgotPasswordActivity.this.startActivity(startingPageIntent);
 
                             }else{
-                                displayMessage("Inicio de Sesión Fallido.");
+                                displayMessage("Error al enviar nueva contraseña.");
                             }
 
                         } catch (JSONException e) {
@@ -121,12 +100,16 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
-                LoginRequest registerRequest = new LoginRequest(email,password,responseListener,errorListener);
-                RequestQueue reqQueue = Volley.newRequestQueue(LoginActivity.this);
+                ForgotPasswordRequest registerRequest = new ForgotPasswordRequest(email,responseListener,errorListener);
+                RequestQueue reqQueue = Volley.newRequestQueue(ForgotPasswordActivity.this);
                 reqQueue.add(registerRequest);
             }
         });
+
+
+
     }
+
     public String trimMessage(String json, String key){
         String trimmedString = null;
 
@@ -143,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Somewhere that has access to a context
     public void displayMessage(String toastString){
-        Toast.makeText(LoginActivity.this, toastString, Toast.LENGTH_LONG).show();
+        Toast.makeText(ForgotPasswordActivity.this, toastString, Toast.LENGTH_LONG).show();
     }
 
     public static void setSuccStatusCode(int s){
