@@ -21,58 +21,50 @@
         android:layout_marginBottom="30dp"
         android:layout_marginTop="-25dp"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_marginTop="57dp"
-        android:id="@+id/tf_password"
-        android:layout_alignTop="@+id/tf_email"
-        android:layout_alignStart="@+id/tf_email"
-        android:hint="Contraseña"
-        android:textColorHint="@color/Field"/>
-
-    <TextView
-        android:text="Registrarme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_linkRegister"
-        android:layout_marginBottom="28dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/OrangeAccent"
-        android:textSize="18dp"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/tf_email"
-        android:hint="Email"
-        android:layout_marginBottom="60dp"
-        android:textColorHint="@color/Field"
-        android:layout_above="@+id/btn_login"
-        android:layout_centerHorizontal="true" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/mail"
         android:id="@+id/imageView2"
+        android:tint="@color/BlueIcon"
         android:layout_below="@+id/imageView"
-        android:layout_toStartOf="@+id/tf_email"
-        android:tint="@color/BlueIcon"/>
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/tf_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:backgroundTint="@color/BlueIcon"
+        android:ems="12"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/Field"
+        android:layout_above="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView2" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/lock"
         android:tint="@color/BlueIcon"
+        android:id="@+id/imageView3"
         android:layout_above="@+id/btn_login"
-        android:layout_toStartOf="@+id/tf_password"
-        android:id="@+id/imageView3" />
+        android:layout_alignParentStart="true" />
+
+
+    <EditText
+        android:id="@+id/tf_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tf_email"
+        android:layout_alignTop="@+id/tf_email"
+        android:backgroundTint="@color/BlueIcon"
+        android:layout_marginTop="57dp"
+        android:ems="12"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColorHint="@color/Field" />
 
     <Button
         android:text="Iniciar Sesión"
@@ -85,8 +77,17 @@
         android:layout_above="@+id/tv_linkRegister"
         android:layout_centerHorizontal="true"
         android:paddingRight="10px"
-        android:paddingLeft="10px"
-        />
+        android:paddingLeft="10px"  />
 
+    <TextView
+        android:text="Registrarme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_linkRegister"
+        android:layout_marginBottom="28dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/OrangeAccent"
+        android:textSize="18dp" />
 
 </RelativeLayout>

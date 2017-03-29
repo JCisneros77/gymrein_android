@@ -8,27 +8,26 @@
     android:background="@color/GreyBackground"
     tools:context="com.gymrein.PaymentActivity">
 
-
-    <TextView
-        android:id="@+id/tv_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="68dp"
-        android:text="Formas de Pago"
-        android:textSize="36sp" />
-
     <ImageButton
         android:id="@+id/btn_back_to_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/tv_payment"
         android:layout_marginTop="13dp"
         android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        android:src="@mipmap/ic_back_button"
+        android:tint="@color/OrangeAccent" />
+    <!--app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"-->
+
+    <TextView
+        android:id="@+id/tv_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Formas de Pago"
+        android:textSize="30sp"
+        android:textColor="@color/BlueIcon"
+        android:layout_alignTop="@+id/btn_back_to_main"
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:id="@+id/lv_payment_methods"
@@ -36,6 +35,9 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_payment"
-        android:layout_marginTop="68dp" />
+        android:layout_marginTop="68dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:headerDividersEnabled="false"/>
 
 </RelativeLayout>

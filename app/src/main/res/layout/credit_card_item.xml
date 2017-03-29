@@ -11,13 +11,15 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_side_menu"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        />
+
 
     <TextView
         android:id="@+id/tv_cc_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="20sp"
         android:text="Item Name"
         android:layout_centerVertical="true"

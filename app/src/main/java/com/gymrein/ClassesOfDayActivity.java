@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,8 @@ public class ClassesOfDayActivity extends AppCompatActivity {
     private ActionBarDrawerToggle menu_drawer_toggle;
     private DrawerLayout menu_drawer_layout;
     private TextView tv_title;
+    private RelativeLayout rl_side_bar;
+
 
     // Save User information
     private static String name;
@@ -41,13 +44,14 @@ public class ClassesOfDayActivity extends AppCompatActivity {
         /* Side Menu Setup */
         menu_drawer_layout = (DrawerLayout)findViewById(R.id.drawer_layout);
         lv_side_menu = (ListView) findViewById(R.id.lv_side_menu);
+        rl_side_bar = (RelativeLayout) findViewById(R.id.activity_side_bar);
 
         addDrawerItems();
 
         // Set title
-        tv_title = (TextView) findViewById(R.id.tv_classes_of_day);
+        /*tv_title = (TextView) findViewById(R.id.tv_classes_of_day);
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Graduate-Regular.ttf");
-        tv_title.setTypeface(custom_font);
+        tv_title.setTypeface(custom_font);*/
 
 
         final ImageButton btn_side_menu = (ImageButton) findViewById(R.id.btn_side_menu);
@@ -82,7 +86,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                         super.onDrawerClosed(drawerView);
                     }
                 });
-                menu_drawer_layout.closeDrawer(lv_side_menu);
+                menu_drawer_layout.closeDrawer(rl_side_bar);
             }
         });
         /* ************************* */
@@ -94,10 +98,10 @@ public class ClassesOfDayActivity extends AppCompatActivity {
 
     private void addDrawerItems() {
         menu_dataset = new ArrayList<>();
-        menu_dataset.add(new SideMenuItemModel("Calendario",R.mipmap.ic_back_button));
-        menu_dataset.add(new SideMenuItemModel("Mis Clases",R.mipmap.lock));
-        menu_dataset.add(new SideMenuItemModel("Pagos",R.mipmap.mail));
-        menu_dataset.add(new SideMenuItemModel("Perfil",R.mipmap.ic_back_button));
+        menu_dataset.add(new SideMenuItemModel("Calendario",R.mipmap.ic_calendar));
+        menu_dataset.add(new SideMenuItemModel("Mis Clases",R.mipmap.ic_list));
+        menu_dataset.add(new SideMenuItemModel("Pagos",R.mipmap.ic_money));
+        menu_dataset.add(new SideMenuItemModel("Perfil",R.mipmap.ic_person));
 
         menu_Adapter = new CustomAdapter(menu_dataset,getApplicationContext(),R.layout.side_menu_item,0);
 
