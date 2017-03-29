@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,16 +34,25 @@ public class LoginActivity extends AppCompatActivity {
         final EditText tf_email = (EditText) findViewById(R.id.tf_email);
         final EditText tf_password = (EditText) findViewById(R.id.tf_password);
         final Button btn_login = (Button) findViewById(R.id.btn_login);
-        final TextView tv_linkRegister =(TextView) findViewById(R.id.tv_linkRegister);
+        final TextView tv_linkForgotPassword =(TextView) findViewById(R.id.tv_linkForgotPassword);
+        final ImageButton ib_back_to_starting = (ImageButton) findViewById(R.id.btn_back_to_starting_page_login);
 
         tf_email.setText("cesar.millan06@gmail.com");
         tf_password.setText("12345678");
 
-        tv_linkRegister.setOnClickListener(new View.OnClickListener() {
+        ib_back_to_starting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
+                Intent startingPageIntent = new Intent(LoginActivity.this,StartingPageActivity.class);
+                LoginActivity.this.startActivity(startingPageIntent);
+            }
+        });
+
+        tv_linkForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotPassIntent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
+                LoginActivity.this.startActivity(forgotPassIntent);
             }
         });
 
