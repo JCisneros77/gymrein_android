@@ -11,14 +11,16 @@ public class UserInformation {
     private  String phone;
     private  int classes;
     private  String token;
+    private String avatar_url;
 
-    public UserInformation(String Name, String Email, String Lastname, String Phone, int Classes, String Token){
+    public UserInformation(String Name, String Email, String Lastname, String Phone, int Classes, String Token,String Avatar){
         name = Name;
         email = Email;
         lastname = Lastname;
         phone = Phone;
         classes = Classes;
         token = Token;
+        avatar_url = Avatar;
     }
 
     // Get User Information
@@ -45,4 +47,6 @@ public class UserInformation {
     public String getToken(){
         return token;
     }
+
+    public String getAvatar(){return avatar_url;}
 }

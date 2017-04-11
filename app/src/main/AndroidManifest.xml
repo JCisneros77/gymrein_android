@@ -20,7 +20,7 @@
 
         <!-- android:theme="@style/AppTheme" -->
 
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ClassesOfDayActivity" />
         <activity android:name=".AddPaymentActivity" />
@@ -33,7 +33,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".BuyPackageActivity"></activity>
     </application>
 
 </manifest>

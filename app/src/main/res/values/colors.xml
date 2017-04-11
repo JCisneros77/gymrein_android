@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
     <color name="GreyBackground">#37474F</color>
-    <color name="OrangeAccent">#FF5722</color>
+    <color name="OrangeAccent">#ff5722</color>
     <color name="BlueIcon">#00b0ff</color>
     <color name="Field">#CCCCCC</color>
-    <color name="OrangePress">#FF8725</color>
+    <color name="OrangePress">#ff8725</color>
 </resources>

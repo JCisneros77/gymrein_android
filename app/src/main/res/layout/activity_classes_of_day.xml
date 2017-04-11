@@ -45,7 +45,59 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/rl_classes_of_day"
+            android:layout_below="@+id/tv_classes_of_day"
+            android:layout_alignParentStart="true">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lv_classes_of_day"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_below="@+id/rl_classes_of_day"
+            android:layout_alignParentStart="true"
+            android:id="@+id/rl_qr_code">
+
+            <ImageView
+                android:id="@+id/iv_qr_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                app:srcCompat="@color/BlueIcon" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_qr_code"
+            android:layout_alignParentEnd="true">
+
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/cv_packages_available"
+                android:layout_width="match_parent"
+                app:autoPlay="false"
+                android:layout_height="200dp"
+                app:fillColor="#FFFFFFFF"
+                app:pageColor="#00000000"
+                app:radius="6dp"
+                app:slideInterval="3000"
+                app:strokeColor="#FF777777"
+                app:strokeWidth="1dp" />
+        </RelativeLayout>
+
     </RelativeLayout>
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -56,27 +108,21 @@
         tools:context="com.gymrein.ClassesOfDayActivity"
         android:layout_gravity="left|start"
         >
-    <!-- Side navigation drawer UI android:layout_gravity="left|start"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-    -->
 
         <ImageView
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:src="@mipmap/icon"
-            android:id="@+id/image_1"
+            android:id="@+id/img_user_avatar"
             android:elevation="5dp"
             android:layout_centerHorizontal="true"
             android:background="@android:color/transparent" />
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/tv_user_name_side_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/image_1"
+            android:layout_below="@+id/img_user_avatar"
             android:layout_centerHorizontal="true"
             android:text="Nombre Usuario"
             android:textColor="#ffffff"
@@ -84,10 +130,10 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/user_clases"
+            android:id="@+id/tv_user_remaining_classes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/user_name"
+            android:layout_below="@+id/tv_user_name_side_menu"
             android:layout_centerHorizontal="true"
             android:text="Clases Restantes"
             android:textColor="#ffffff"
@@ -98,7 +144,7 @@
             android:id="@+id/lv_side_menu"
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:layout_below="@id/user_clases"
+            android:layout_below="@id/tv_user_remaining_classes"
             android:layout_marginBottom="50dp"
             android:background="@color/GreyBackground"
             android:divider="@null"
@@ -109,13 +155,13 @@
             />
 
         <ImageView
+            android:id="@+id/img_small_logo"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/icon"
-            android:id="@+id/image_2"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@android:color/transparent"
-            android:layout_alignParentBottom="true"/>
+            android:src="@mipmap/icon" />
 
     </RelativeLayout>
 

@@ -40,6 +40,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         lv_payment_methods = (ListView) findViewById(R.id.lv_payment_methods);
         btn_back_to_main = (ImageButton) findViewById(R.id.btn_back_to_main);
+
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response) {

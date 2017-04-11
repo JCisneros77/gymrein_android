@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/GreyBackground"
+    tools:context="com.gymrein.PaymentActivity">
+
+
+    <TextView
+        android:id="@+id/tv_package_classes_bp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="103dp"
+        android:text="Clases"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/tv_credit_card_bp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/btn_back_to_main_buy_package"
+        android:text="Tarjeta"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_package_name_bp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="30sp"
+        android:textColor="@color/BlueIcon"
+        android:layout_alignBottom="@+id/btn_back_to_main_buy_package"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/btn_back_to_main_buy_package"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_package_classes_bp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@mipmap/ic_close" />
+
+    <TextView
+        android:id="@+id/tv_total_bp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_package_classes_bp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="21dp"
+        android:layout_toEndOf="@+id/tv_package_name_bp"
+        android:text="Total"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_total_bp"
+        android:layout_below="@+id/tv_total_bp"
+        android:layout_marginTop="29dp"
+        android:text="Amount"
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/sp_credit_card_bp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_credit_card_bp"
+        android:layout_below="@+id/tv_credit_card_bp"
+        android:layout_marginTop="26dp"
+        android:layout_toStartOf="@+id/tv_total_amount"
+        android:layout_alignEnd="@+id/tv_total_amount" />
+
+    <EditText
+        android:id="@+id/tb_promo_code_bp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tv_total_amount"
+        android:layout_alignStart="@+id/sp_credit_card_bp"
+        android:layout_below="@+id/sp_credit_card_bp"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:hint="Código Promocional"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn_buy_package"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Comprar" />
+</RelativeLayout>

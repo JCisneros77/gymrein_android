@@ -173,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
                                 break;
                             case R.id.delete_picture:
-                                btn_profile_picture.setImageResource(R.mipmap.ic_launcher);
+                                btn_profile_picture.setImageResource(R.mipmap.ic_add_image);
                                 profile_pic = false;
                                 break;
                         }
