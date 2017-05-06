@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/GreyBackground"
+    tools:context="com.gymrein.ClassDetailsActivity">
+
+    <ImageView
+        android:id="@+id/iv_available_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/iv_class_time_cdtls"
+        android:layout_below="@+id/tv_class_time_cdtls"
+        android:layout_marginTop="38dp"
+        android:tint="@color/BlueIcon"
+        app:srcCompat="@mipmap/ic_calendar" />
+
+    <ImageView
+        android:id="@+id/iv_class_date_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_class_duration_cdtls"
+        android:layout_alignStart="@+id/tv_class_desc_cdtls"
+        android:layout_marginBottom="35dp"
+        android:tint="@color/BlueIcon"
+        app:srcCompat="@mipmap/ic_calendar" />
+
+    <ImageView
+        android:id="@+id/iv_class_time_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_calendar"
+        android:tint="@color/BlueIcon"
+        android:layout_alignTop="@+id/iv_class_date_cdtls"
+        android:layout_alignEnd="@+id/btn_book_class_cdtls" />
+
+    <TextView
+        android:id="@+id/tv_class_time_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:layout_toEndOf="@id/iv_class_time_cdtls"
+        android:layout_marginStart="5dp"
+        android:layout_alignBaseline="@+id/tv_class_date_cdtls"
+        android:layout_alignBottom="@+id/tv_class_date_cdtls"
+        android:layout_alignStart="@+id/tv_class_available_cdtls" />
+
+    <TextView
+        android:id="@+id/tv_class_date_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="date"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:layout_marginBottom="51dp"
+        android:layout_marginStart="18dp"
+        android:layout_above="@+id/tv_class_duration_cdtls"
+        android:layout_toEndOf="@+id/btn_back_to_classes_by_date" />
+
+    <TextView
+        android:id="@+id/tv_class_duration_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="duration"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:layout_marginBottom="60dp"
+        android:layout_above="@+id/btn_book_class_cdtls"
+        android:layout_alignStart="@+id/tv_class_date_cdtls" />
+
+    <TextView
+        android:id="@+id/tv_class_available_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="available"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:layout_marginStart="5dp"
+        android:layout_alignBaseline="@+id/tv_class_duration_cdtls"
+        android:layout_alignBottom="@+id/tv_class_duration_cdtls"
+        android:layout_toEndOf="@+id/iv_available_cdtls" />
+
+    <TextView
+        android:id="@+id/tv_class_desc_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:text="classDescription"
+        android:textColor="#ffff"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@+id/tv_instructor_name_cdtls"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/btn_back_to_classes_by_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        android:src="@mipmap/ic_close"
+        android:tint="@color/OrangeAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_class_desc_cdtls" />
+
+    <TextView
+        android:id="@+id/tv_class_name_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="classname"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/btn_back_to_classes_by_date"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/BlueIcon"/>
+
+    <Button
+        android:id="@+id/btn_book_class_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reservar Lugar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:background="@drawable/rouded_corners"
+        android:paddingRight="10px"
+        android:paddingLeft="10px"/>
+
+
+    <TextView
+        android:id="@+id/tv_instructor_name_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="instructorName"
+        android:textSize="20sp"
+        android:textColor="@color/OrangeAccent"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/iv_instructor_photo_csdtls"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/iv_instructor_photo_csdtls"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@mipmap/ic_person"
+        android:layout_below="@+id/btn_back_to_classes_by_date"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/iv_duration_cdtls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_calendar"
+        android:tint="@color/BlueIcon"
+        android:layout_alignTop="@+id/iv_available_cdtls"
+        android:layout_alignStart="@+id/iv_class_date_cdtls" />
+
+
+</RelativeLayout>

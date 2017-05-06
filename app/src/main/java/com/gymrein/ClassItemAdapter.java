@@ -10,7 +10,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by jcisneros77 on 4/10/17.
@@ -73,7 +76,23 @@ public class ClassItemAdapter extends ArrayAdapter<ClassItemModel> implements Vi
         }
 
         viewHolder.tv_item_name.setText(ClassItemModel.getEvent_name());
-        viewHolder.tv_item_time.setText(ClassItemModel.getDate().toString());
+
+
+        try {
+            SimpleDateFormat toFullDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateStr = ClassItemModel.getDate().replace("T"," ").replace("Z","");
+            System.out.println("DATE: " + dateStr);
+            Date fullDate = toFullDate.parse(dateStr);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+            String shortTimeStr = sdf.format(fullDate);
+            System.out.println("TIME: " + shortTimeStr);
+            viewHolder.tv_item_time.setText(shortTimeStr);
+        } catch (ParseException e){
+            System.out.println(e);
+        }
+
         Picasso.with(menu_context).load(ClassItemModel.getLogo_url()).into(viewHolder.iv_item_image);
         return convertView;
     }

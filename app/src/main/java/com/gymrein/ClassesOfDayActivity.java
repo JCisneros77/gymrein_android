@@ -140,6 +140,13 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                         break;
                     }
 
+                    case "Reservar":
+                    {
+                        Intent bookClassIntent = new Intent(ClassesOfDayActivity.this,BookClassActivity.class);
+                        ClassesOfDayActivity.this.startActivity(bookClassIntent);
+                        break;
+                    }
+
 
                 }
 
@@ -323,7 +330,6 @@ public class ClassesOfDayActivity extends AppCompatActivity {
 
                     if(statusCode == 200 || statusCode == 304){
                         System.out.println("Success 200 o 304!!!!!!");
-                        package_dataset = new ArrayList<>();
                         for(int i = 0; i < jsonResponse.length(); ++i){
                             JSONObject jsonObj = jsonResponse.getJSONObject(i);
                             String id = jsonObj.getString("id");
@@ -338,7 +344,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                             String duration = class_date.getString("duration");
                             String finish = class_date.getString("finish");
                             String limit = class_date.getString("limit");
-                            boolean available = class_date.getBoolean("available");
+                            int available = class_date.getInt("available");
                             String logo_url = class_date.getString("logo_url");
 
                             JSONObject event = class_date.getJSONObject("event");

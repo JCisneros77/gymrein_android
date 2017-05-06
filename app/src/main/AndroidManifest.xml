@@ -34,7 +34,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".BuyPackageActivity"></activity>
+        <activity android:name=".BuyPackageActivity" />
+        <activity android:name=".BookClassActivity" />
+        <activity android:name=".ClassDetailsActivity"></activity>
     </application>
 
 </manifest>
