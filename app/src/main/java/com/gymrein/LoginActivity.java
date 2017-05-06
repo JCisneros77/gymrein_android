@@ -74,14 +74,16 @@ public class LoginActivity extends AppCompatActivity {
                             if(successFlag){
                                 JSONObject userDetails = new JSONObject(jsonResponse.getString("user"));
                                 String nameResponse = userDetails.getString("name");
+                                String id = Integer.toString(userDetails.getInt("id"));
                                 String lastNameResponse = userDetails.getString("lastname");
                                 String emailResponse = userDetails.getString("email");
                                 String phoneResponse = userDetails.getString("phone");
                                 int classesResponse = userDetails.getInt("available_classes");
                                 String tokenResponse = userDetails.getString("access_token");
                                 String avatar_url = userDetails.getString("avatar_url");
+                                String dob = userDetails.getString("birth");
 
-                                UserInformation userInfo = new UserInformation(nameResponse,emailResponse,lastNameResponse,phoneResponse,classesResponse,tokenResponse,avatar_url);
+                                UserInformation userInfo = new UserInformation(id,nameResponse,dob,emailResponse,lastNameResponse,phoneResponse,classesResponse,tokenResponse,avatar_url);
                                 GymReinApp app = (GymReinApp) getApplicationContext();
                                 app.setUserInformation(userInfo);
 

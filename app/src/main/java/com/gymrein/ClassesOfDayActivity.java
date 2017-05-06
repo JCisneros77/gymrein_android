@@ -125,6 +125,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent classDetailsIntent = new Intent(ClassesOfDayActivity.this,BookedClassDetailsActivity.class);
+                displayMessage("ID: " + class_dataset.get(position).getId() + "   Name: " + class_dataset.get(position).getEvent_name());
                 classDetailsIntent.putExtra("id",class_dataset.get(position).getId());
                 finish();
                 ClassesOfDayActivity.this.startActivity(classDetailsIntent);
@@ -141,7 +142,6 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                     {
                         Intent paymentsIntent = new Intent(ClassesOfDayActivity.this,PaymentActivity.class);
                         ClassesOfDayActivity.this.startActivity(paymentsIntent);
-
                         break;
                     }
 
@@ -149,6 +149,20 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                     {
                         Intent bookClassIntent = new Intent(ClassesOfDayActivity.this,BookClassActivity.class);
                         ClassesOfDayActivity.this.startActivity(bookClassIntent);
+                        break;
+                    }
+
+                    case "Perfil":
+                    {
+                        Intent profileIntent = new Intent(ClassesOfDayActivity.this,UserProfileActivity.class);
+                        ClassesOfDayActivity.this.startActivity(profileIntent);
+                        break;
+                    }
+
+                    case "Mis Clases":
+                    {
+                        Intent myClassesIntent = new Intent(ClassesOfDayActivity.this,MyClassesActivity.class);
+                        ClassesOfDayActivity.this.startActivity(myClassesIntent);
                         break;
                     }
 
@@ -339,7 +353,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                         System.out.println("Success 200 o 304!!!!!!");
                         for(int i = 0; i < jsonResponse.length(); ++i){
                             JSONObject jsonObj = jsonResponse.getJSONObject(i);
-                            String id = jsonObj.getString("id");
+                            String id = jsonObj.getString("class_date_id");
                             boolean assisted = jsonObj.getBoolean("assisted");
 
                             JSONObject class_date = jsonObj.getJSONObject("class_date");

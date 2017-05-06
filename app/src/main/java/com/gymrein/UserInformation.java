@@ -12,8 +12,11 @@ public class UserInformation {
     private  int classes;
     private  String token;
     private String avatar_url;
+    private String id;
+    private String date_of_birth;
 
-    public UserInformation(String Name, String Email, String Lastname, String Phone, int Classes, String Token,String Avatar){
+    public UserInformation(String Id,String Name, String Birth, String Email, String Lastname, String Phone, int Classes, String Token,String Avatar){
+        id = Id;
         name = Name;
         email = Email;
         lastname = Lastname;
@@ -21,9 +24,26 @@ public class UserInformation {
         classes = Classes;
         token = Token;
         avatar_url = Avatar;
+        date_of_birth = Birth;
+    }
+
+    public void updateUser(String Id,String Name, String Birth, String Email, String Lastname, String Phone, int Classes, String Token,String Avatar){
+        id = Id;
+        name = Name;
+        email = Email;
+        lastname = Lastname;
+        phone = Phone;
+        classes = Classes;
+        token = Token;
+        avatar_url = Avatar;
+        date_of_birth = Birth;
     }
 
     // Get User Information
+    public String getId() {return id;}
+
+    public String getDate_of_birth() {return date_of_birth;};
+
     public String getName(){
         return name;
     }
