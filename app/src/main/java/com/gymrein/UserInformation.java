@@ -49,4 +49,6 @@ public class UserInformation {
     }
 
     public String getAvatar(){return avatar_url;}
+
+    public void setClasses(int c) { classes = c;}
 }

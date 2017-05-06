@@ -170,7 +170,6 @@ public class BuyPackageActivity extends AppCompatActivity {
                                     if (jsonObj.has("errors")) {
                                         promo_id_flag = false;
                                         tv_total_amount.setText("$" + Integer.toString(package_price));
-                                        tv_package_classes.setText("Clases: " + Integer.toString(package_classes));
                                         displayMessage("Código de promoción invalido.");
                                     } else {
                                         promo_id_flag = true;
@@ -183,15 +182,16 @@ public class BuyPackageActivity extends AppCompatActivity {
                                         if (promo_type.equals("percentage")) {
                                             tv_total_amount.setText("$" + Integer.toString(Math.round((float) package_price * (1 - ((float)promo_amount / 100)))));
                                         } else if (promo_type.equals("quantity")) {
-                                            tv_package_classes.setText("Clases: " + Integer.toString(package_classes + promo_amount));
+                                            tv_total_amount.setText("$" + Integer.toString(package_price - promo_amount));
                                         } else {
                                             displayMessage("Unknown error.");
                                         }
+
+                                        displayMessage("Promoción aplicada");
                                     }
                                     //}
                                 } else {
                                     tv_total_amount.setText("$" + Integer.toString(package_price));
-                                    tv_package_classes.setText("Clases: " + Integer.toString(package_classes));
                                     System.out.println("Error. Status: " + statusCode);
                                 }
 
@@ -252,6 +252,9 @@ public class BuyPackageActivity extends AppCompatActivity {
                             if (statusCode == 200) {
                                 System.out.println("Success 200 BUY");
                                 displayMessage("Paquete comprado con exito.");
+                                JSONObject userObj = jsonObj.getJSONObject("user");
+                                userInfo.setClasses(userObj.getInt("available_classes"));
+
                                 Intent classesOfDayIntent = new Intent(BuyPackageActivity.this,ClassesOfDayActivity.class);
                                 BuyPackageActivity.this.startActivity(classesOfDayIntent);
 
