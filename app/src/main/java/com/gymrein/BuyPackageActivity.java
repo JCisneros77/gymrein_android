@@ -40,6 +40,7 @@ public class BuyPackageActivity extends AppCompatActivity {
     private boolean promo_id_flag;
     private List<String> credit_cards;
     private ArrayList<SideMenuItemModel> payment_dataset;
+    private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class BuyPackageActivity extends AppCompatActivity {
 
         promo_id_flag = false;
 
-        final RequestQueue queue = Volley.newRequestQueue(BuyPackageActivity.this);
+        queue = Volley.newRequestQueue(BuyPackageActivity.this);
         // User Info
         final GymReinApp app = (GymReinApp) getApplicationContext();
         final UserInformation userInfo = app.getUserInformation();
@@ -168,6 +169,8 @@ public class BuyPackageActivity extends AppCompatActivity {
                                     System.out.println("Success 200 PROMO");
                                     if (jsonObj.has("errors")) {
                                         promo_id_flag = false;
+                                        tv_total_amount.setText("$" + Integer.toString(package_price));
+                                        tv_package_classes.setText("Clases: " + Integer.toString(package_classes));
                                         displayMessage("Código de promoción invalido.");
                                     } else {
                                         promo_id_flag = true;
@@ -178,7 +181,7 @@ public class BuyPackageActivity extends AppCompatActivity {
                                         int promo_amount = jsonObj.getInt("amount");
                                         // Adjust the amount depending on the promotion
                                         if (promo_type.equals("percentage")) {
-                                            tv_total_amount.setText("$" + Integer.toString(package_price * (1 - (promo_amount / 100))));
+                                            tv_total_amount.setText("$" + Integer.toString(Math.round((float) package_price * (1 - ((float)promo_amount / 100)))));
                                         } else if (promo_type.equals("quantity")) {
                                             tv_package_classes.setText("Clases: " + Integer.toString(package_classes + promo_amount));
                                         } else {
@@ -187,6 +190,8 @@ public class BuyPackageActivity extends AppCompatActivity {
                                     }
                                     //}
                                 } else {
+                                    tv_total_amount.setText("$" + Integer.toString(package_price));
+                                    tv_package_classes.setText("Clases: " + Integer.toString(package_classes));
                                     System.out.println("Error. Status: " + statusCode);
                                 }
 
@@ -292,6 +297,7 @@ public class BuyPackageActivity extends AppCompatActivity {
                 System.out.println("FLAG:" + promo_id_flag);
                 System.out.println("Package:" + package_id);
                 System.out.println("Card:" + card_id);
+                System.out.println("PROMO CODE:" + promo_id);
                 if (promo_id_flag)
                     buyPackageRequest = new BuyPackageRequest(userInfo.getToken(),package_id,card_id,promo_id,responseListener, errorListener);
                 else

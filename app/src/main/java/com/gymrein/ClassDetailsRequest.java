@@ -12,29 +12,30 @@ import java.util.Map;
  * Created by jcisneros77 on 5/5/17.
  */
 
-public class ClassDetailsRequest extends StringRequest {
-    private static final String class_details_url = "https://gymrein.herokuapp.com/api/v1/class_dates/";
+    public class ClassDetailsRequest extends StringRequest {
+        private static final String class_details_url = "https://gymrein.herokuapp.com/api/v1/class_dates/";
 
-    private Map<String,String> paramsT;
-    private String token;
+        private Map<String,String> paramsT;
+        private String token;
 
-    @Override
-    protected Response<String> parseNetworkResponse(NetworkResponse response) {
-        ClassDetailsActivity.setStatusCode(response.statusCode);
-        return super.parseNetworkResponse(response);
-    }
+        @Override
+        protected Response<String> parseNetworkResponse(NetworkResponse response) {
+            ClassDetailsActivity.setStatusCode(response.statusCode);
+            BookedClassDetailsActivity.setStatusCode(response.statusCode);
+            return super.parseNetworkResponse(response);
+        }
 
-    @Override
-    public Map<String, String> getHeaders() throws AuthFailureError {
-        paramsT = new HashMap<>();
-        paramsT.put("Authorization","Token token=\"" + token +"\"");
+        @Override
+        public Map<String, String> getHeaders() throws AuthFailureError {
+            paramsT = new HashMap<>();
+            paramsT.put("Authorization","Token token=\"" + token +"\"");
 
-        return paramsT;
-    }
+            return paramsT;
+        }
 
-    public ClassDetailsRequest(String id,String t,Response.Listener<String> listener, Response.ErrorListener errorListener){
-        super(Method.GET,class_details_url.concat(id),listener,errorListener);
-        token = t;
-    }
+        public ClassDetailsRequest(String id,String t,Response.Listener<String> listener, Response.ErrorListener errorListener){
+            super(Method.GET,class_details_url.concat(id),listener,errorListener);
+            token = t;
+        }
 
 }

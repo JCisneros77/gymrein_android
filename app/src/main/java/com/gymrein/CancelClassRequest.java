@@ -9,18 +9,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by jcisneros77 on 4/5/17.
+ * Created by jcisneros77 on 5/6/17.
  */
 
-public class PromotionCodeRequest extends StringRequest {
-    private static final String promotion_code_request = "https://gymrein.herokuapp.com/api/v1/promotions/validate";
-    private Map<String,String> params;
+public class CancelClassRequest extends StringRequest {
+    private static final String class_details_url = "https://gymrein.herokuapp.com/api/v1/reservations/";
+
     private Map<String,String> paramsT;
     private String token;
 
     @Override
     protected Response<String> parseNetworkResponse(NetworkResponse response) {
-        BuyPackageActivity.setStatusCode(response.statusCode);
+        ClassDetailsActivity.setStatusCode(response.statusCode);
         return super.parseNetworkResponse(response);
     }
 
@@ -32,19 +32,9 @@ public class PromotionCodeRequest extends StringRequest {
         return paramsT;
     }
 
-    public PromotionCodeRequest(String code,String t, Response.Listener<String> listener, Response.ErrorListener errorListener){
-        super(Method.POST,promotion_code_request,listener,errorListener);
-        params = new HashMap<>();
-        params.put("code",code);
+    public CancelClassRequest(String id,String t,Response.Listener<String> listener, Response.ErrorListener errorListener){
+        super(Method.DELETE,class_details_url.concat(id),listener,errorListener);
         token = t;
     }
-
-    @Override
-    protected Map<String, String> getParams() throws AuthFailureError {
-        return params;
-    }
-
-
-
 
 }

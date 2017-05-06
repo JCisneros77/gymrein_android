@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -58,10 +59,24 @@ public class BookClassActivity extends AppCompatActivity {
             }
         });
 
+
         // Get User Info
         app = (GymReinApp) getApplicationContext();
         userInfo = app.getUserInformation();
         queue = Volley.newRequestQueue(BookClassActivity.this);
+
+
+        // Get classes for today
+        Calendar now = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String nowDate = formatter.format(now.getTime());
+        String[] separateCurrentDate = nowDate.split("-");
+        String year = separateCurrentDate[0];
+        String month = separateCurrentDate[1];
+        String day = separateCurrentDate[2];
+        int currentYear = Integer.parseInt(year);
+        int currentMonth = Integer.parseInt(month);
+        int currentDay = Integer.parseInt(day);
 
         // Get classes of day picked in calendar
         cv_calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -79,6 +94,8 @@ public class BookClassActivity extends AppCompatActivity {
                 BookClassActivity.this.startActivity(classDetailsIntent);
             }
         });
+
+        addClassesOfDay(currentYear,currentMonth,currentDay);
 
     }
 
@@ -123,6 +140,7 @@ public class BookClassActivity extends AppCompatActivity {
                         }
                         class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item);
                         lv_classes_day.setAdapter(class_adapter);
+
 
                     }
                     else{

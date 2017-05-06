@@ -101,6 +101,8 @@ public class ClassesOfDayActivity extends AppCompatActivity {
 
         // Add Side menu items
         addDrawerItems();
+
+        // addClassesOfDay
         addClassesOfDay();
 
         // Set title
@@ -122,7 +124,10 @@ public class ClassesOfDayActivity extends AppCompatActivity {
         lv_classes_of_day.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent classDetailsIntent = new Intent(ClassesOfDayActivity.this,BookedClassDetailsActivity.class);
+                classDetailsIntent.putExtra("id",class_dataset.get(position).getId());
+                finish();
+                ClassesOfDayActivity.this.startActivity(classDetailsIntent);
             }
         });
 
@@ -319,13 +324,15 @@ public class ClassesOfDayActivity extends AppCompatActivity {
 
     private void addClassesOfDay(){
         class_dataset = new ArrayList<>();
-        // Get
+        //
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonResponse = new JSONArray(response);
+                    System.out.println("CLASSEEESSS DEL DIAAA!!!!!!");
                     System.out.println(jsonResponse.toString());
+                    System.out.println("END CLASSEESSS DEL DIAAA!!!!!!");
                     System.out.println("Status COD:" + statusCode);
 
                     if(statusCode == 200 || statusCode == 304){
@@ -358,6 +365,8 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                             ClassItemModel newClass = new ClassItemModel(id,assisted,event_id,instructor_id,location_id,date,room,duration,finish,limit,available,logo_url,event_name
                                                                             ,event_description,location_name,location_adress);
                             class_dataset.add(newClass);
+                            class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item);
+                            lv_classes_of_day.setAdapter(class_adapter);
                         }
 
                     }
@@ -407,8 +416,6 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(packageRequest);
 
-        class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item);
-        lv_classes_of_day.setAdapter(class_adapter);
     }
 
     public String trimMessage(String json, String key){
