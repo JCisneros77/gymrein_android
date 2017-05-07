@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_name_userProf"
         android:text="Nombre"
-        android:textSize="30sp"
+        android:textSize="21sp"
         android:layout_marginStart="60dp"
         android:backgroundTint="@color/BlueIcon"
         android:layout_marginTop="64dp"
@@ -58,14 +58,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="21sp"
         android:id="@+id/tv_lastName_userProf"
         android:text="Apellido"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/BlueIcon"
         android:layout_below="@+id/tv_name_userProf"
-        android:layout_alignStart="@+id/tv_name_userProf"
         android:layout_alignParentEnd="true"
-        android:backgroundTint="@color/BlueIcon"/>
+        android:layout_alignStart="@+id/tv_name_userProf" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="21sp"
         android:id="@+id/tv_email_userProf"
         android:text="Email"
         android:layout_marginTop="15dp"
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_phone_userProf"
         android:text="Teléfono"
-        android:textSize="30sp"
+        android:textSize="21sp"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/tv_email_userProf"
         android:layout_alignStart="@+id/tv_email_userProf"
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha de Nacimiento"
-        android:textSize="30sp"
+        android:textSize="21sp"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/tv_phone_userProf"
         android:layout_alignStart="@+id/tv_phone_userProf"
@@ -144,13 +144,13 @@
         android:id="@+id/tv_gender_userProf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="21sp"
         android:text="Gender"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/tv_date_of_birth_userProf"
         android:layout_alignEnd="@+id/tv_date_of_birth_userProf"
         android:layout_alignStart="@+id/tv_date_of_birth_userProf" />
-    
+
 
     <Button
         android:text="Editar Información"

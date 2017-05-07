@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -93,7 +94,7 @@ public class UserProfileActivity extends AppCompatActivity {
                     System.out.println(jsonResponse.toString());
                     System.out.println("Status:" + statusCode);
 
-                    if(statusCode == 200){
+                    if(statusCode == 200 || statusCode == 304){
                         String name = jsonResponse.getString("name");
                         String lastname = jsonResponse.getString("lastname");
                         String email = jsonResponse.getString("email");
@@ -151,9 +152,12 @@ public class UserProfileActivity extends AppCompatActivity {
         };
 
 
-        UserDetailsRequest deletePaymentRequest = new UserDetailsRequest(userInfo.getId(),userInfo.getToken(),responseListener,errorListener);
-        RequestQueue queue = Volley.newRequestQueue(UserProfileActivity.this);
-        queue.add(deletePaymentRequest);
+        UserDetailsRequest userDetailsRequest = new UserDetailsRequest(userInfo.getId(),userInfo.getToken(),responseListener,errorListener);
+        userDetailsRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(userDetailsRequest);
     }
 
     public String trimMessage(String json, String key){

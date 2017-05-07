@@ -91,7 +91,7 @@ public class BuyPackageActivity extends AppCompatActivity {
                     System.out.println(jsonResponse.toString());
                     System.out.println("Status CC:" + statusCode);
 
-                    if(statusCode == 200){
+                    if(statusCode == 200 || statusCode == 304){
                         System.out.println("Success 200 Credit Cards");
                         payment_dataset = new ArrayList<>();
 

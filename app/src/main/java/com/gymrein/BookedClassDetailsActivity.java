@@ -49,6 +49,7 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
     private static int statusCode;
 
     private String class_id;
+    private String reservation_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
 
         // Get class_id
         class_id = getIntent().getStringExtra("id");
+        reservation_id = getIntent().getStringExtra("resId");
 
         // Initialize GUI Items
         tv_name = (TextView) findViewById(R.id.tv_class_name_cdtls);
@@ -254,7 +256,7 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
             }
         };
 
-        CancelClassRequest cancelClassRequest = new CancelClassRequest(class_id,userInfo.getToken(),responseListener,errorListener);
+        CancelClassRequest cancelClassRequest = new CancelClassRequest(reservation_id,userInfo.getToken(),responseListener,errorListener);
         queue.add(cancelClassRequest);
     }
 

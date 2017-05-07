@@ -215,6 +215,8 @@ public class RegisterActivity extends AppCompatActivity {
                         encodedImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
                     }
 
+                    System.out.println(encodedImage);
+
 
                     if (gender.equals("Masculino"))
                         gender = "male";

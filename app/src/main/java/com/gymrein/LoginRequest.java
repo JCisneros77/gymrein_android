@@ -28,6 +28,7 @@ public class LoginRequest extends StringRequest {
         params = new HashMap<>();
         params.put("email",email);
         params.put("password",password);
+        params.put("platform","android");
     }
 
     @Override

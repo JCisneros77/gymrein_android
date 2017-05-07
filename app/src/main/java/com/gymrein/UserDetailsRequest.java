@@ -33,7 +33,7 @@ public class UserDetailsRequest extends StringRequest {
     }
 
     public UserDetailsRequest(String id,String t,Response.Listener<String> listener, Response.ErrorListener errorListener){
-        super(Method.GET,user_details_url.concat(id),listener,errorListener);
+        super(Method.GET,user_details_url,listener,errorListener);
         token = t;
     }
 

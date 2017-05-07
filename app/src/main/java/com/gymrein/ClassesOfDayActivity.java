@@ -125,8 +125,9 @@ public class ClassesOfDayActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent classDetailsIntent = new Intent(ClassesOfDayActivity.this,BookedClassDetailsActivity.class);
-                displayMessage("ID: " + class_dataset.get(position).getId() + "   Name: " + class_dataset.get(position).getEvent_name());
+                //displayMessage("ID: " + class_dataset.get(position).getId() + "   Name: " + class_dataset.get(position).getEvent_name());
                 classDetailsIntent.putExtra("id",class_dataset.get(position).getId());
+                classDetailsIntent.putExtra("resId",class_dataset.get(position).getReservation_id());
                 finish();
                 ClassesOfDayActivity.this.startActivity(classDetailsIntent);
             }
@@ -136,7 +137,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
         lv_side_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                displayMessage(menu_dataset.get(position).getName());
+                //displayMessage(menu_dataset.get(position).getName());
                 switch (menu_dataset.get(position).getName()){
                     case "Pago":
                     {
@@ -355,6 +356,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                             JSONObject jsonObj = jsonResponse.getJSONObject(i);
                             String id = jsonObj.getString("class_date_id");
                             boolean assisted = jsonObj.getBoolean("assisted");
+                            String resId = jsonObj.getString("id");
 
                             JSONObject class_date = jsonObj.getJSONObject("class_date");
                             String event_id = class_date.getString("event_id");
@@ -376,7 +378,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                             String location_name = location.getString("name");
                             String location_adress = location.getString("address");
                             // Get all packages
-                            ClassItemModel newClass = new ClassItemModel(id,assisted,event_id,instructor_id,location_id,date,room,duration,finish,limit,available,logo_url,event_name
+                            ClassItemModel newClass = new ClassItemModel(resId,id,assisted,event_id,instructor_id,location_id,date,room,duration,finish,limit,available,logo_url,event_name
                                                                             ,event_description,location_name,location_adress);
                             class_dataset.add(newClass);
                             class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item);
