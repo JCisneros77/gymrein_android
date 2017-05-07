@@ -83,10 +83,9 @@
         android:ems="10"
         android:id="@+id/tf_email_updProf"
         android:hint="Email"
+        android:backgroundTint="@color/BlueIcon"
         android:layout_below="@+id/tf_lastName_updProf"
-        android:layout_alignStart="@+id/tf_lastName_updProf"
-        android:layout_alignParentEnd="true"
-        android:backgroundTint="@color/BlueIcon"/>
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:layout_width="wrap_content"

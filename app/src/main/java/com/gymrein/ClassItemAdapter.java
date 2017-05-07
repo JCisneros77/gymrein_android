@@ -81,13 +81,13 @@ public class ClassItemAdapter extends ArrayAdapter<ClassItemModel> implements Vi
         try {
             SimpleDateFormat toFullDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String dateStr = ClassItemModel.getDate().replace("T"," ").replace("Z","");
-            System.out.println("DATE: " + dateStr);
+            //System.out.println("DATE: " + dateStr);
             Date fullDate = toFullDate.parse(dateStr);
 
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
             String shortTimeStr = sdf.format(fullDate);
-            System.out.println("TIME: " + shortTimeStr);
+           //System.out.println("TIME: " + shortTimeStr);
             viewHolder.tv_item_time.setText(shortTimeStr);
         } catch (ParseException e){
             System.out.println(e);

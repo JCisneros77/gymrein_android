@@ -22,6 +22,7 @@ import java.util.Map;
         protected Response<String> parseNetworkResponse(NetworkResponse response) {
             ClassDetailsActivity.setStatusCode(response.statusCode);
             BookedClassDetailsActivity.setStatusCode(response.statusCode);
+            ClassInWaitingListActivity.setStatusCode(response.statusCode);
             return super.parseNetworkResponse(response);
         }
 

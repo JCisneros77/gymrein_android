@@ -50,6 +50,7 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
 
     private String class_id;
     private String reservation_id;
+    private int coming_from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
         // Get class_id
         class_id = getIntent().getStringExtra("id");
         reservation_id = getIntent().getStringExtra("resId");
+        coming_from = getIntent().getIntExtra("coming",-1);
 
         // Initialize GUI Items
         tv_name = (TextView) findViewById(R.id.tv_class_name_cdtls);
@@ -73,7 +75,7 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
         ib_back_to_main = (ImageButton) findViewById(R.id.btn_back_to_classes_by_date);
         btn_cancel_class = (Button) findViewById(R.id.btn_book_class_cdtls);
 
-        btn_cancel_class.setText("Cancelar Reservación.");
+        btn_cancel_class.setText("Cancelar Reservación");
 
 
         // Get User Info
@@ -85,8 +87,14 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
         ib_back_to_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent classesOfDayIntent = new Intent(BookedClassDetailsActivity.this,ClassesOfDayActivity.class);
-                BookedClassDetailsActivity.this.startActivity(classesOfDayIntent);
+                if (coming_from == 0){
+                    Intent myClassesIntent = new Intent(BookedClassDetailsActivity.this, MyClassesActivity.class);
+                    BookedClassDetailsActivity.this.startActivity(myClassesIntent);
+                }
+                else {
+                    Intent classesOfDayIntent = new Intent(BookedClassDetailsActivity.this, ClassesOfDayActivity.class);
+                    BookedClassDetailsActivity.this.startActivity(classesOfDayIntent);
+                }
             }
         });
 
@@ -98,8 +106,14 @@ public class BookedClassDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cancelClass();
-                Intent classesByDateIntent = new Intent(BookedClassDetailsActivity.this,ClassesOfDayActivity.class);
-                BookedClassDetailsActivity.this.startActivity(classesByDateIntent);
+                if (coming_from == 0){
+                    Intent myClassesIntent = new Intent(BookedClassDetailsActivity.this, MyClassesActivity.class);
+                    BookedClassDetailsActivity.this.startActivity(myClassesIntent);
+                }
+                else {
+                    Intent classesByDateIntent = new Intent(BookedClassDetailsActivity.this, ClassesOfDayActivity.class);
+                    BookedClassDetailsActivity.this.startActivity(classesByDateIntent);
+                }
             }
         });
 

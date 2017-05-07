@@ -1,9 +1,7 @@
 package com.gymrein;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -25,13 +23,9 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
-public class ClassDetailsActivity extends AppCompatActivity {
-
-
+public class ClassInWaitingListActivity extends AppCompatActivity {
     // GUI Elements
     private TextView tv_name;
     private TextView tv_desc;
@@ -42,8 +36,8 @@ public class ClassDetailsActivity extends AppCompatActivity {
     private TextView tv_available;
 
     private ImageView iv_instructor_photo;
-    private ImageButton ib_back_to_book_classes;
-    private Button btn_book_class;
+    private ImageButton ib_back_to_main;
+    private Button btn_cancel_class;
 
     // Save User information
     private GymReinApp app;
@@ -52,7 +46,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
     private static int statusCode;
 
     private String class_id;
-    private int available;
+    private String reservation_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +55,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
 
         // Get class_id
         class_id = getIntent().getStringExtra("id");
-        available = getIntent().getIntExtra("available",-1);
+        reservation_id = getIntent().getStringExtra("resId");
 
         // Initialize GUI Items
         tv_name = (TextView) findViewById(R.id.tv_class_name_cdtls);
@@ -73,51 +67,36 @@ public class ClassDetailsActivity extends AppCompatActivity {
         tv_available = (TextView) findViewById(R.id.tv_class_available_cdtls);
 
         iv_instructor_photo = (ImageView) findViewById(R.id.iv_instructor_photo_csdtls);
-        ib_back_to_book_classes = (ImageButton) findViewById(R.id.btn_back_to_classes_by_date);
-        btn_book_class = (Button) findViewById(R.id.btn_book_class_cdtls);
+        ib_back_to_main = (ImageButton) findViewById(R.id.btn_back_to_classes_by_date);
+        btn_cancel_class = (Button) findViewById(R.id.btn_book_class_cdtls);
+
+        btn_cancel_class.setText("Quitar de Lista de Espera");
 
 
         // Get User Info
         app = (GymReinApp) getApplicationContext();
         userInfo = app.getUserInformation();
-        queue = Volley.newRequestQueue(ClassDetailsActivity.this);
+        queue = Volley.newRequestQueue(ClassInWaitingListActivity.this);
 
         // Set back button
-        ib_back_to_book_classes.setOnClickListener(new View.OnClickListener() {
+        ib_back_to_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent classesByDateIntent = new Intent(ClassDetailsActivity.this,BookClassActivity.class);
-                ClassDetailsActivity.this.startActivity(classesByDateIntent);
+                Intent myClassesIntent = new Intent(ClassInWaitingListActivity.this,MyClassesActivity.class);
+                ClassInWaitingListActivity.this.startActivity(myClassesIntent);
             }
         });
 
         // Fill GUI items with class details
         getClassDetails();
 
-        // Book Class
-        btn_book_class.setOnClickListener(new View.OnClickListener() {
+        // Cancel Class
+        btn_cancel_class.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (available > 0) {
-                    bookClass("reservations");
-                    Intent classesByDateIntent = new Intent(ClassDetailsActivity.this, BookClassActivity.class);
-                    ClassDetailsActivity.this.startActivity(classesByDateIntent);
-                }
-                else{
-                    new AlertDialog.Builder(ClassDetailsActivity.this)
-                            .setTitle("Clase Llena")
-                            .setMessage("Esta clase está llena. \n ¿Desea agregarla a su lista de espera?")
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface dialog, int whichButton) {
-                                    bookClass("waiting_lists");
-                                    Intent classesByDateIntent = new Intent(ClassDetailsActivity.this, BookClassActivity.class);
-                                    ClassDetailsActivity.this.startActivity(classesByDateIntent);
-                                }})
-                            .setNegativeButton("No", null).show();
-
-                }
+                cancelClass();
+                Intent myClassesIntent = new Intent(ClassInWaitingListActivity.this,MyClassesActivity.class);
+                ClassInWaitingListActivity.this.startActivity(myClassesIntent);
             }
         });
 
@@ -218,27 +197,24 @@ public class ClassDetailsActivity extends AppCompatActivity {
         queue.add(classDetailsRequest);
     }
 
-    private void bookClass(final String url){
-        Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>(){
+    private void cancelClass(){
+        Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
                 try {
-                    System.out.println(response.toString());
+                    JSONObject jsonResponse = new JSONObject(response);
+                    System.out.println(jsonResponse.toString());
                     System.out.println("Status:" + statusCode);
 
                     if(statusCode == 200 || statusCode == 304){
                         System.out.println("Success 200 o 304!!!!!!");
-                        if (response.getBoolean("success")){
-                            // Class successfully booked
-                            if (!response.has("waiting_list"))
-                                displayMessage("Clase reservada con éxito");
-                            else
-                                displayMessage("Clase agregada a lista de espera.");
+                        if (jsonResponse.getBoolean("success")){
+                            displayMessage("La clase se quitó de la lista de espera");
                         }
                         else{
-                            // Error booking class
-                            displayMessage(response.getString("error"));
+                            displayMessage(jsonResponse.getString("error"));
                         }
+
                     }
                     else{
                         System.out.println("Error. Status: " + statusCode);
@@ -277,19 +253,8 @@ public class ClassDetailsActivity extends AppCompatActivity {
             }
         };
 
-        Map<String, String> params = new HashMap<>();
-        params.put("class_date_id", class_id);
-
-        Map<String, Map<String, String>> reservationParams = new HashMap<>();
-        if (url.equals("reservations"))
-            reservationParams.put("reservation", params);
-        else
-            reservationParams.put("waiting_list", params);
-
-        JSONObject reservationJSON = new JSONObject(reservationParams);
-
-        UserBookClassRequest userBookClassRequest = new UserBookClassRequest(reservationJSON,userInfo.getToken(),url,responseListener,errorListener);
-        queue.add(userBookClassRequest);
+        CancelClassInWaitingListRequest cancelClassRequest = new CancelClassInWaitingListRequest(reservation_id,userInfo.getToken(),responseListener,errorListener);
+        queue.add(cancelClassRequest);
     }
 
     public String trimMessage(String json, String key){
@@ -308,7 +273,7 @@ public class ClassDetailsActivity extends AppCompatActivity {
 
     //Somewhere that has access to a context
     public void displayMessage(String toastString){
-        Toast.makeText(ClassDetailsActivity.this, toastString, Toast.LENGTH_LONG).show();
+        Toast.makeText(ClassInWaitingListActivity.this, toastString, Toast.LENGTH_LONG).show();
     }
 
     public static void setStatusCode(int c){

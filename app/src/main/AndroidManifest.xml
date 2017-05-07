@@ -40,7 +40,8 @@
         <activity android:name=".BookedClassDetailsActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".MyClassesActivity" />
-        <activity android:name=".UserEditProfileActivity"></activity>
+        <activity android:name=".UserEditProfileActivity" />
+        <activity android:name=".ClassInWaitingListActivity"></activity>
     </application>
 
 </manifest>

@@ -91,6 +91,7 @@ public class BookClassActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent classDetailsIntent = new Intent(BookClassActivity.this,ClassDetailsActivity.class);
                 classDetailsIntent.putExtra("id",class_dataset.get(position).getId());
+                classDetailsIntent.putExtra("available",class_dataset.get(position).getAvailable());
                 BookClassActivity.this.startActivity(classDetailsIntent);
             }
         });

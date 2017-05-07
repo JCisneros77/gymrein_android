@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class UserBookClassRequest extends JsonObjectRequest {
 
-    private static final String book_class_url = "https://gymrein.herokuapp.com/api/v1/reservations";
+    private static final String book_class_url = "https://gymrein.herokuapp.com/api/v1/";
     private Map<String,String> paramsT;
     private String token;
 
@@ -34,8 +34,8 @@ public class UserBookClassRequest extends JsonObjectRequest {
         return super.parseNetworkResponse(response);
     }
 
-    public UserBookClassRequest(JSONObject params,String t, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener){
-        super(Method.POST,book_class_url,params,listener,errorListener);
+    public UserBookClassRequest(JSONObject params,String t,String url, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener){
+        super(Method.POST,book_class_url.concat(url),params,listener,errorListener);
         token = t;
     }
 }
