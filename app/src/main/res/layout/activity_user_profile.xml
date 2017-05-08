@@ -174,5 +174,14 @@
         android:background="@android:color/transparent"
         app:srcCompat="@mipmap/ic_back_button" />
 
+    <ImageView
+        android:id="@+id/iv_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_phone"
+        android:tint="@color/OrangeAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

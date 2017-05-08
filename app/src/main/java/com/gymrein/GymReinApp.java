@@ -16,4 +16,6 @@ public class GymReinApp extends Application {
     public void setUserInformation(UserInformation o){
         obj = o;
     }
+
+    public void logout(){obj = null;}
 }

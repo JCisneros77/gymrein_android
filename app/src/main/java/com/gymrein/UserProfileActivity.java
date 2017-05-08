@@ -1,7 +1,9 @@
 package com.gymrein;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +35,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private ImageView iv_user_photo;
     private ImageButton btn_back_to_main;
     private Button btn_edit_profile;
+    private ImageView btn_logout;
 
     private String id;
 
@@ -57,6 +60,7 @@ public class UserProfileActivity extends AppCompatActivity {
         iv_user_photo = (ImageView) findViewById(R.id.btn_profile_picture_userProf);
         btn_back_to_main = (ImageButton) findViewById(R.id.btn_back_to_starting_page_userProf);
         btn_edit_profile = (Button) findViewById(R.id.btn_edit_profile_userProf);
+        btn_logout = (ImageView) findViewById(R.id.iv_logout);
 
         // Get User Info
         app = (GymReinApp) getApplicationContext();
@@ -78,6 +82,25 @@ public class UserProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainPageIntent = new Intent(UserProfileActivity.this, UserEditProfileActivity.class);
                 UserProfileActivity.this.startActivity(mainPageIntent);
+            }
+        });
+
+        // btn_logout
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(UserProfileActivity.this)
+                        .setTitle("Cerrar Sesión")
+                        .setMessage("¿Desea cerrar sesión?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                app.logout();
+                                Intent startingPageIntent = new Intent(UserProfileActivity.this, StartingPageActivity.class);
+                                UserProfileActivity.this.startActivity(startingPageIntent);
+                            }})
+                        .setNegativeButton("No", null).show();
             }
         });
 
