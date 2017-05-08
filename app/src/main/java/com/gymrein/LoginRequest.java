@@ -23,12 +23,13 @@ public class LoginRequest extends StringRequest {
         return super.parseNetworkResponse(response);
     }
 
-    public LoginRequest(String email,String password, Response.Listener<String> listener, Response.ErrorListener errorListener){
+    public LoginRequest(String email,String password,String token, Response.Listener<String> listener, Response.ErrorListener errorListener){
         super(Method.POST,login_request_url,listener,errorListener);
         params = new HashMap<>();
         params.put("email",email);
         params.put("password",password);
         params.put("platform","android");
+        params.put("device_id",token);
     }
 
     @Override
