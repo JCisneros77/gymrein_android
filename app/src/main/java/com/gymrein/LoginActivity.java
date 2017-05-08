@@ -95,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
         final TextView tv_linkForgotPassword =(TextView) findViewById(R.id.tv_linkForgotPassword);
         final ImageButton ib_back_to_starting = (ImageButton) findViewById(R.id.btn_back_to_starting_page_login);
 
-        tf_email.setText("cesar.millan06@gmail.com");
-        tf_password.setText("12345678");
+       // tf_email.setText("cesar.millan06@gmail.com");
+        //tf_password.setText("12345678");
 
         ib_back_to_starting.setOnClickListener(new View.OnClickListener() {
             @Override
