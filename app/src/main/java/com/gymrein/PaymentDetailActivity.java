@@ -2,6 +2,7 @@ package com.gymrein;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,11 @@ public class PaymentDetailActivity extends AppCompatActivity {
         final String exp_month = getIntent().getStringExtra("exp_month");
         final String exp_year = getIntent().getStringExtra("exp_year");
         final String id = getIntent().getStringExtra("id");
+
+        TextView tv_title = (TextView) findViewById(R.id.tv_payment_details);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Graduate-Regular.ttf");
+        tv_title.setTypeface(custom_font);
+
         
         tv_card_holder_name.setText(card_name);
         tv_card_number.setText("**** " + card_number);

@@ -2,6 +2,7 @@ package com.gymrein;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -71,6 +72,10 @@ public class ClassDetailsActivity extends AppCompatActivity {
         tv_time = (TextView) findViewById(R.id.tv_class_time_cdtls);
         tv_duration = (TextView) findViewById(R.id.tv_class_duration_cdtls);
         tv_available = (TextView) findViewById(R.id.tv_class_available_cdtls);
+
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Graduate-Regular.ttf");
+        tv_name.setTypeface(custom_font);
 
         iv_instructor_photo = (ImageView) findViewById(R.id.iv_instructor_photo_csdtls);
         ib_back_to_book_classes = (ImageButton) findViewById(R.id.btn_back_to_classes_by_date);

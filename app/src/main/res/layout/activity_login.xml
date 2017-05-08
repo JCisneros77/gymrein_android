@@ -95,6 +95,7 @@
         android:id="@+id/btn_back_to_starting_page_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tint="@color/OrangeAccent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"

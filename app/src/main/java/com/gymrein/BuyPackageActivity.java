@@ -1,6 +1,7 @@
 package com.gymrein;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -54,6 +55,9 @@ public class BuyPackageActivity extends AppCompatActivity {
         btn_buy_package = (Button) findViewById(R.id.btn_buy_package);
         tb_promo_code = (EditText) findViewById(R.id.tb_promo_code_bp);
         sp_credit_cards = (Spinner) findViewById(R.id.sp_credit_card_bp);
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Graduate-Regular.ttf");
+        tv_package_name.setTypeface(custom_font);
 
         final String package_name = getIntent().getStringExtra("name");
         final int package_price = getIntent().getIntExtra("price",0);

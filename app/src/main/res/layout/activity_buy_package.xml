@@ -43,11 +43,12 @@
         android:id="@+id/btn_back_to_main_buy_package"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/tv_package_classes_bp"
         android:layout_marginTop="16dp"
+        android:tint="@color/OrangeAccent"
         android:background="@android:color/transparent"
-        app:srcCompat="@mipmap/ic_close" />
+        app:srcCompat="@mipmap/ic_close"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tv_package_classes_bp" />
 
     <TextView
         android:id="@+id/tv_total_bp"

@@ -1,12 +1,14 @@
 package com.gymrein;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
@@ -37,6 +39,11 @@ public class PaymentActivity extends AppCompatActivity {
         String deleteMessage = getIntent().getStringExtra("message");
         if (deleteMessage != null)
             displayMessage(deleteMessage);
+
+        TextView tv_title = (TextView) findViewById(R.id.tv_payment);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Graduate-Regular.ttf");
+        tv_title.setTypeface(custom_font);
+
 
         lv_payment_methods = (ListView) findViewById(R.id.lv_payment_methods);
         btn_back_to_main = (ImageButton) findViewById(R.id.btn_back_to_main);

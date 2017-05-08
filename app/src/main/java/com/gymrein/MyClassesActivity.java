@@ -1,12 +1,14 @@
 package com.gymrein;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -47,6 +49,13 @@ public class MyClassesActivity extends AppCompatActivity {
         lv_classes = (ListView) findViewById(R.id.lv_classes_MyClass);
         lv_waiting_list = (ListView) findViewById(R.id.lv_waiting_list_MyClass);
         btn_back_to_main = (ImageButton) findViewById(R.id.btn_back_to_main_myClass);
+
+        TextView tv_title = (TextView) findViewById(R.id.tv_title_myClass);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Graduate-Regular.ttf");
+        tv_title.setTypeface(custom_font);
+
+        TextView tv_title_wl = (TextView) findViewById(R.id.tv_waiting_list_MyClass);
+        tv_title_wl.setTypeface(custom_font);
 
         // Get User Info
         app = (GymReinApp) getApplicationContext();
@@ -149,7 +158,7 @@ public class MyClassesActivity extends AppCompatActivity {
                                     ,event_description,location_name,location_address);
                             class_dataset.add(newClass);
                         }
-                        class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item);
+                        class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item,false);
                         lv_classes.setAdapter(class_adapter);
 
 
@@ -245,7 +254,7 @@ public class MyClassesActivity extends AppCompatActivity {
                                     ,event_description,location_name,location_address);
                             waiting_list_dataset.add(newClass);
                         }
-                        waiting_list_adapter = new ClassItemAdapter(waiting_list_dataset,getApplicationContext(),R.layout.class_of_day_item);
+                        waiting_list_adapter = new ClassItemAdapter(waiting_list_dataset,getApplicationContext(),R.layout.class_of_day_item,false);
                         lv_waiting_list.setAdapter(waiting_list_adapter);
 
 

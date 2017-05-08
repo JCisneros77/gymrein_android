@@ -5,11 +5,23 @@
     android:orientation="vertical"
     android:layout_marginTop="1dp">
 
+    <TextView
+        android:id="@+id/tv_cod_item_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="location"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:layout_marginEnd="15dp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/tv_cod_item_time" />
+
     <ImageView
         android:id="@+id/iv_cod_item_image"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@mipmap/ic_side_menu"
+        android:tint="@color/BlueIcon"
         android:layout_centerVertical="true"
         android:layout_marginEnd="10dp"
         android:layout_alignParentEnd="true" />
@@ -18,22 +30,32 @@
         android:id="@+id/tv_cod_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:text="Item Name"
         android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
         android:layout_toStartOf="@+id/iv_cod_item_image"
-        android:layout_marginEnd="20dp" />
+        android:text="time"
+        android:textColor="@color/OrangeAccent"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_cod_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="8dp"
         android:text="Item Name"
         android:textColor="@android:color/white"
-        android:textSize="20sp" />
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/iv_cod_item_image"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tv_cod_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_cod_item_name"
+        android:layout_below="@+id/tv_cod_item_name"
+        android:text="date"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/OrangeAccent" />
 
 </RelativeLayout>

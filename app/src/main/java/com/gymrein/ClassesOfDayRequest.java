@@ -21,6 +21,7 @@ public class ClassesOfDayRequest extends StringRequest {
     @Override
     protected Response<String> parseNetworkResponse(NetworkResponse response) {
         ClassesOfDayActivity.setStatusCode(response.statusCode);
+        BookClassActivity.setStatusCode(response.statusCode);
         return super.parseNetworkResponse(response);
     }
 

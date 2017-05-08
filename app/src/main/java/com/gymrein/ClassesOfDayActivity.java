@@ -381,7 +381,7 @@ public class ClassesOfDayActivity extends AppCompatActivity {
                             ClassItemModel newClass = new ClassItemModel(resId,id,assisted,event_id,instructor_id,location_id,date,room,duration,finish,limit,available,logo_url,event_name
                                                                             ,event_description,location_name,location_adress);
                             class_dataset.add(newClass);
-                            class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item);
+                            class_adapter = new ClassItemAdapter(class_dataset,getApplicationContext(),R.layout.class_of_day_item,false);
                             lv_classes_of_day.setAdapter(class_adapter);
                         }
 
